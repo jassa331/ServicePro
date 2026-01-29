@@ -28,6 +28,7 @@ export default function AppRoutes() {
                                 </ProtectedRoute>
                             }
                         />
+                        {/*jasdsa*/}
                         <Route
                             path="/customers"
                             element={
