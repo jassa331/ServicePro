@@ -1,8 +1,15 @@
+// src/services/customerService.ts
 import axios from "axios";
-import type { CustomerDto } from "../models/CustomerDto";
-
-const API_URL = "https://your-api-url/api/customers"; // backend URL here
 
 export const getCustomers = async () => {
-    return axios.get<CustomerDto[]>(API_URL);
+    const token = localStorage.getItem("token"); // get JWT from storage
+
+    if (!token) throw new Error("No token found. Please login.");
+
+    return axios.get("https://hoste.runasp.net/api/Customer", {
+        headers: {
+            Authorization: `Bearer ${token}`, // attach token
+            "Content-Type": "application/json"
+        },
+    });
 };
