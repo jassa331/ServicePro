@@ -1,18 +1,23 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import NavMenu from "../layout/NavMenu";
+import "../../assets/css/MainLayout.css";
 
 export default function MainLayout() {
     return (
-        <div>
-            <nav style={{ padding: 10, background: "#eee" }}>
-                <Link to="/">Dashboard</Link> |{" "}
-                <Link to="/customers">Customers</Link> |{" "}
-                <Link to="/jobs">Jobs</Link>
-            </nav>
+        <div className="layout">
+            {/* LEFT SIDEBAR */}
+            <NavMenu />
 
-            <hr />
+            {/* RIGHT CONTENT */}
+            <div className="main-content">
+                {/* TOP BAR */}
+                <div className="top-bar">
+                    <h3>Dashboard</h3>
+                </div>
 
-            {/* ?? THIS IS MANDATORY */}
-            <Outlet />
+                {/* PAGE CONTENT */}
+                <Outlet />
+            </div>
         </div>
     );
 }
