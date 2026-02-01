@@ -15,7 +15,7 @@ const NavMenu: React.FC = () => {
             <nav className="sidebar-menu">
                 <NavLink to="/dashboard">🏠</NavLink>
                 <NavLink to="/customers">👤</NavLink>
-                <NavLink to="/jobs">🕐</NavLink>
+                <NavLink to="/jobs">🕐 </NavLink>
                 <NavLink to="/invoices">💰</NavLink>
                 <NavLink to="/settings">🎓</NavLink>
             </nav>
