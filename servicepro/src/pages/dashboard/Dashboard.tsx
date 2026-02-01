@@ -1,4 +1,4 @@
-﻿import "../../assets/css/dashboard.css"; // CSS
+﻿import "../../assets/css/Dashboard.css"; // CSS
 
 const Dashboard = () => {
     return (
