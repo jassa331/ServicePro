@@ -16,6 +16,38 @@
     position: relative;
     z-index: 1000;
 }
+.search-input {
+    padding: 6px 1px;
+    border-radius: 1px;
+    border: 1px solid #ccc;
+    margin-left: auto;
+}
+.icon-btn {
+    background-color: #ffffff !important; /* ALWAYS white */
+    border: 1px solid #e5e7eb;
+    padding: 4px 6px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+
+    .icon-btn i {
+        color: #000000; /* PURE BLACK */
+        font-size: 14px;
+    }
+
+    .icon-btn:hover,
+    .icon-btn:active,
+    .icon-btn:focus,
+    .icon-btn:focus-visible {
+        background-color: #ffffff !important; /* no color change */
+        outline: none;
+        box-shadow: none;
+    }
+button {
+    -webkit-tap-highlight-color: transparent;
+}
+
 /* ====== SIDEBAR LOGO ====== */
 .sidebar-logo {
     display: flex;
