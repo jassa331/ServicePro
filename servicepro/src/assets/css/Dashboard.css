@@ -1,0 +1,95 @@
+.cs-dashboard {
+    padding: 20px;
+    background: #f5f7fa;
+}
+
+/* BLUE STRIP */
+.cs-summary-strip {
+    background: #0b4da2;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+    color: white;
+}
+
+/* MISSED */
+.cs-missed {
+    background: #e35a48;
+    padding: 15px;
+    border-radius: 8px;
+    width: 200px;
+}
+
+    .cs-missed .row {
+        margin-top: 10px;
+    }
+
+/* COMMON BLOCK */
+.cs-block {
+    min-width: 180px;
+}
+
+.muted {
+    font-size: 13px;
+    opacity: 0.8;
+}
+
+.link {
+    color: #ffd54f;
+    cursor: pointer;
+}
+
+.yellow {
+    color: #ffeb3b;
+}
+
+/* COMPLIANCE */
+.compliance-box {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.expired {
+    background: #d32f2f;
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.expiring {
+    background: #1565c0;
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+/* TABLE */
+.cs-table {
+    background: white;
+    margin-top: 25px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+table {
+    width: 100%;
+    margin-top: 15px;
+    border-collapse: collapse;
+}
+
+th {
+    background: #f1f1f1;
+    padding: 10px;
+    text-align: left;
+}
+
+td {
+    padding: 20px;
+}
+
+.empty {
+    text-align: center;
+    color: #777;
+}
