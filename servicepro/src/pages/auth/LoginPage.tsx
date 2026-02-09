@@ -28,7 +28,7 @@ export default function LoginPage() {
             });
 
             login(res.data.token); // remove 2nd argument
-            navigate("/"); // redirect after login
+            navigate("/dashboard"); // redirect after login
         } catch (err: any) {
             setError("Invalid credentials");
         }
