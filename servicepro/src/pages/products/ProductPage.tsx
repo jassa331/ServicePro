@@ -1,14 +1,16 @@
 import React from 'react';
 import { NavMenu } from '../../components/layout/NavMenu';
-import { Footer } from '../../components/layout/Footer';
 import { ProductImageGallery } from '../../components/common/ProductImageGallery';
+import "../../assets/css/ProductPage.css"; // capital D
+
 
 export const ProductPage: React.FC = () => {
     const productImages = [
-        '/assets/images/tmt1.png',
-        '/assets/images/tmt2.png',
-        '/assets/images/tmt3.png'
+        '/myimage.png',
+        '/tmt1.png',
+        
     ];
+
 
     return (
         <>
@@ -43,7 +45,6 @@ export const ProductPage: React.FC = () => {
                     </div>
                 </div>
             </main>
-            <Footer />
         </>
     );
 };
