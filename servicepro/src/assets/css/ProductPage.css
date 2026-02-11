@@ -1,0 +1,138 @@
+/* ===== Global Container ===== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ===== Breadcrumb ===== */
+.breadcrumb {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+    .breadcrumb span {
+        cursor: pointer;
+    }
+
+        .breadcrumb span:hover {
+            color: #d32f2f;
+        }
+
+/* ===== Product Page Layout ===== */
+.product-page {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+/* ===== Product Details Section ===== */
+.product-details {
+    flex: 1;
+    min-width: 350px;
+}
+
+    .product-details h1 {
+        font-size: 28px;
+        margin-bottom: 10px;
+        color: #222;
+    }
+
+/* ===== Price Section ===== */
+.price {
+    font-size: 22px;
+    font-weight: 600;
+    color: #d32f2f;
+    margin-bottom: 20px;
+}
+
+.price-request {
+    font-size: 14px;
+    color: #777;
+    margin-left: 10px;
+}
+
+/* ===== Product Specifications Table ===== */
+.product-specs {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 25px;
+}
+
+    .product-specs td {
+        padding: 10px 12px;
+        border: 1px solid #e0e0e0;
+        font-size: 14px;
+    }
+
+    .product-specs tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .product-specs td:first-child {
+        font-weight: 600;
+        background-color: #f4f4f4;
+        width: 40%;
+    }
+
+/* ===== Buttons ===== */
+.product-actions {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 12px 20px;
+    border-radius: 5px;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+/* Primary Button */
+.btn-primary {
+    background-color: #d32f2f;
+    color: white;
+}
+
+    .btn-primary:hover {
+        background-color: #b71c1c;
+    }
+
+/* Secondary Button */
+.btn-secondary {
+    background-color: #333;
+    color: white;
+}
+
+    .btn-secondary:hover {
+        background-color: #000;
+    }
+
+/* ===== Responsive Design ===== */
+@media (max-width: 992px) {
+    .product-page {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 576px) {
+    .product-details h1 {
+        font-size: 22px;
+    }
+
+    .price {
+        font-size: 18px;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+}

@@ -1,4 +1,3 @@
-// src/routes/AppRoutes.tsx
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import MainLayout from "../components/layout/MainLayout";
 import CustomersList from "../pages/customers/CustomersList";
@@ -6,20 +5,25 @@ import Dashboard from "../pages/dashboard/Dashboard";
 import { AuthProvider } from "../context/AuthProvider";
 import LoginPage from "../pages/auth/LoginPage";
 import ProtectedRoute from "./ProtectedRoute";
+import { ProductPage } from "../pages/products/ProductPage";
 
 export default function AppRoutes() {
     return (
         <AuthProvider>
             <BrowserRouter>
                 <Routes>
-                    {/* ? Default redirect */}
+                    {/* Default redirect */}
                     <Route path="/" element={<Navigate to="/login" replace />} />
 
                     {/* Login page */}
                     <Route path="/login" element={<LoginPage />} />
 
-                    {/* Protected area */}
+                    {/* Main layout wrapper */}
                     <Route element={<MainLayout />}>
+                        {/* Public route */}
+                        <Route path="/products" element={<ProductPage />} />
+
+                        {/* Protected routes */}
                         <Route
                             path="/dashboard"
                             element={
@@ -27,11 +31,7 @@ export default function AppRoutes() {
                                     <Dashboard />
                                 </ProtectedRoute>
                             }
-                            //jassa
-                            //jassa
-                        /*    jassa*/
                         />
-                        {/*jasdsa*/}
                         <Route
                             path="/customers"
                             element={

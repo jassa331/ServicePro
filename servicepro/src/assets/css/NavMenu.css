@@ -1,13 +1,135 @@
-.sidebar {
-    width: 220px;
-    background: #0b4da2;
-    color: white;
-    padding: 20px;
+/* ===== NAVBAR MAIN ===== */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 60px;
+    background: white;
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
 }
 
-    .sidebar a {
-        display: block;
-        color: white;
-        margin: 15px 0;
+/* ===== LOGO ===== */
+/* ===== LOGO WRAPPER ===== */
+.logo {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+/* Main Bold Initial Logo */
+.logo-main {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #111827;
+}
+
+/* Small Subtitle */
+.logo-sub {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: #6b7280;
+    text-transform: uppercase;
+}
+
+
+/* ===== MENU ===== */
+.menu {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+    margin: 0;
+    padding: 0;
+}
+
+    /* ===== MENU LINKS ===== */
+    .menu li a {
         text-decoration: none;
+        color: #1a1b1c;
+        font-size: 15px;
+        font-weight: 500;
+        position: relative;
+        padding: 5px 0;
+        transition: all 0.3s ease;
     }
+
+        /* Hover Glow Effect */
+        .menu li a:hover {
+            color: #121111;
+        }
+
+        /* Animated underline */
+        .menu li a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0%;
+            height: 2px;
+            background: black;
+            transition: width 0.3s ease;
+        }
+
+        .menu li a:hover::after {
+            width: 100%;
+        }
+
+/* ===== CALL BUTTON ===== */
+.contact-btn a {
+    background: BLACK;
+    color: white;
+    padding: 11px 22px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 14px rgba(249,115,22,0.4);
+}
+
+    .contact-btn a:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(249,115,22,0.6);
+    }
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 992px) {
+
+    .navbar {
+        padding: 18px 30px;
+    }
+
+    .menu {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .menu {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .contact-btn {
+        width: 100%;
+    }
+
+        .contact-btn a {
+            display: block;
+            text-align: center;
+        }
+}
