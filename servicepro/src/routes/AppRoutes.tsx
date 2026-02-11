@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import MainLayout from "../components/layout/MainLayout";
+
 import CustomersList from "../pages/customers/CustomersList";
 import Dashboard from "../pages/dashboard/Dashboard";
 import { AuthProvider } from "../context/AuthProvider";
@@ -19,7 +19,7 @@ export default function AppRoutes() {
                     <Route path="/login" element={<LoginPage />} />
 
                     {/* Main layout wrapper */}
-                    <Route element={<MainLayout />}>
+                   
                         {/* Public route */}
                         <Route path="/products" element={<ProductPage />} />
 
@@ -40,7 +40,7 @@ export default function AppRoutes() {
                                 </ProtectedRoute>
                             }
                         />
-                    </Route>
+                   
                 </Routes>
             </BrowserRouter>
         </AuthProvider>

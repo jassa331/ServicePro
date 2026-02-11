@@ -7,7 +7,7 @@ export const NavMenu: React.FC = () => {
     return (
         <nav className="navbar">
             <div className="logo">
-                <span className="logo-main">S.R &E</span>
+                <span className="logo-main">S.R ENTERPRISE</span>
                 <span className="logo-sub"></span>
             </div>
             <ul className="menu">
