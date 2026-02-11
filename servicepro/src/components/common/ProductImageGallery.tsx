@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 interface Props {
     images: string[];
 }
-
+ //jassa
 export const ProductImageGallery: React.FC<Props> = ({ images }) => {
     const [mainImage, setMainImage] = useState(images[0]);
 
