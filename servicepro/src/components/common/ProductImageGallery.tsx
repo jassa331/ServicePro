@@ -6,6 +6,10 @@ interface ProductImageGalleryProps {
 }
 
 export const ProductImageGallery: React.FC<ProductImageGalleryProps> = ({ images }) => {
+ //jassa
+export const ProductImageGallery: React.FC<Props> = ({ images }) => {
+    const [mainImage, setMainImage] = useState(images[0]);
+
     return (
         <div className="gallery-container">
             <div className="gallery-track">
