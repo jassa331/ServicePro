@@ -6,6 +6,8 @@ import { AuthProvider } from "../context/AuthProvider";
 import LoginPage from "../pages/auth/LoginPage";
 import ProtectedRoute from "./ProtectedRoute";
 import { ProductPage } from "../pages/products/ProductPage";
+import ProductCreate from "../pages/products/ProductCreate";
+
 
 export default function AppRoutes() {
     return (
@@ -22,6 +24,14 @@ export default function AppRoutes() {
                    
                         {/* Public route */}
                         <Route path="/products" element={<ProductPage />} />
+                    <Route
+                        path="/admin/product-create"
+                        element={
+                            <ProtectedRoute>
+                                <ProductCreate />
+                            </ProtectedRoute>
+                        }
+                    />
 
                         {/* Protected routes */}
                         <Route

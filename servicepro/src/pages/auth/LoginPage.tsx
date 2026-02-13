@@ -22,7 +22,7 @@ export default function LoginPage() {
         setError("");
 
         try {
-            const res = await axios.post("https://hoste.runasp.net/api/auth/login", {
+            const res = await axios.post("https://localhost:7046/api/auth/login", {
                 email,
                 password
             });
