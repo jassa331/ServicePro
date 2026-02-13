@@ -1,7 +1,6 @@
 ﻿import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { ProductImageGallery } from "../../components/common/ProductImageGallery";
 import "../../assets/css/CategoryPage.css";
 
 interface Product {
@@ -9,12 +8,8 @@ interface Product {
     name: string;
     price: number;
     category: string;
+    description?: string;
     imageUrls: string[];
-}
-
-interface CategoryResponse {
-    category: string;
-    products: Product[];
 }
 
 export const CategoryPage: React.FC = () => {
@@ -22,18 +17,27 @@ export const CategoryPage: React.FC = () => {
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        axios.get<CategoryResponse[]>("https://localhost:7046/api/Product/by-category")
-            .then(res => {
-                const categoryData = res.data.find(
-                    c => c.category.toLowerCase() === categoryName?.toLowerCase()
-                );
+    // Map frontend URL slug → backend category
+    const categoryMap: { [key: string]: string } = {
+        cemment: "cemment",
+        "tmt-bars": "TMT Bar",
+        "binding-wire": "Binding Wire",
+        "roofing-sheet": "Roofing Sheet",
+        "ms-pipe": "cemment",
+        "steel-angle": "Steel Angle",
+    };
 
-                if (categoryData) {
-                    setProducts(categoryData.products);
-                } else {
-                    setProducts([]);
-                }
+    useEffect(() => {
+        if (!categoryName) return;
+
+        const backendCategory = categoryMap[categoryName] || "";
+
+        axios.get<Product[]>("https://systemapi.runasp.net/api/Product")
+            .then(res => {
+                const filtered = res.data.filter(
+                    p => p.category.toLowerCase() === backendCategory.toLowerCase()
+                );
+                setProducts(filtered);
             })
             .catch(err => console.error(err))
             .finally(() => setLoading(false));
@@ -53,18 +57,19 @@ export const CategoryPage: React.FC = () => {
                 ) : (
                     products.map(product => (
                         <div key={product.id} className="product-card">
-                            <div className="image-wrapper">
-                                <ProductImageGallery
-                                    images={product.imageUrls.map(url => ({
-                                        src: url,
-                                        caption: product.name
-                                    }))}
+                            {product.imageUrls?.length > 0 && (
+                                <img
+                                    src={product.imageUrls[0]}
+                                    alt={product.name}
+                                    className="product-image"
                                 />
-                            </div>
+                            )}
 
                             <div className="product-info">
                                 <h3>{product.name}</h3>
+                                <p className="category">Category: {product.category}</p>
                                 <p className="price">₹ {product.price}</p>
+                                {product.description && <p className="description">{product.description}</p>}
                                 <button className="buy-btn">View Details</button>
                             </div>
                         </div>

@@ -1,38 +1,47 @@
-/* Background Gradient */
+/* General Page Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    background: #f5f6fa;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Container for the Product Form */
 .product-container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 60px 20px;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #eef2ff, #f8fafc);
+    align-items: flex-start;
 }
 
 /* Card Styling */
 .product-card {
-    width: 720px;
-    background: #ffffff;
-    padding: 40px;
-    border-radius: 18px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-    transition: 0.3s ease;
+    background: #fff;
+    width: 100%;
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
     .product-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.15);
     }
 
     .product-card h2 {
         text-align: center;
         margin-bottom: 30px;
-        font-weight: 600;
-        color: #1e293b;
+        font-weight: 700;
+        color: #1e1e2f;
     }
 
-/* Form Groups */
+/* Form Group Styling */
 .form-group {
-    margin-bottom: 22px;
+    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
 }
@@ -40,57 +49,61 @@
     .form-group label {
         margin-bottom: 8px;
         font-weight: 600;
-        color: #334155;
+        color: #555;
     }
 
-/* Inputs */
-input,
-textarea,
-select {
-    padding: 12px 14px;
-    border-radius: 10px;
-    border: 1px solid #e2e8f0;
-    font-size: 14px;
-    transition: 0.3s ease;
-    background: #f9fafb;
-}
-
-    input:focus,
-    textarea:focus,
-    select:focus {
-        border-color: #2563eb;
-        background: white;
-        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
-        outline: none;
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 12px 15px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 15px;
+        transition: 0.3s;
     }
 
-/* Textarea */
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #4e9af1;
+            box-shadow: 0 0 5px rgba(78,154,241,0.5);
+        }
+
 textarea {
-    resize: none;
-    height: 100px;
+    resize: vertical;
+    min-height: 80px;
 }
 
-/* Row Layout */
+/* Row Styling for Price and Category */
 .row {
     display: flex;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
     .row .form-group {
         flex: 1;
     }
 
-/* File Upload Styling */
-input[type="file"] {
-    background: white;
-    border: 2px dashed #cbd5e1;
-    padding: 18px;
+/* Submit Button */
+.submit-btn {
+    background: linear-gradient(90deg, #4e9af1, #2f80ed);
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 25px;
     cursor: pointer;
-    text-align: center;
+    font-size: 16px;
+    transition: 0.3s;
+    width: 100%;
 }
 
-    input[type="file"]:hover {
-        border-color: #2563eb;
+    .submit-btn:hover {
+        background: linear-gradient(90deg, #2f80ed, #4e9af1);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(47,128,237,0.3);
     }
 
 /* Image Preview Grid */
@@ -103,72 +116,67 @@ input[type="file"] {
 
 .preview-item {
     position: relative;
-    transition: 0.3s ease;
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-    .preview-item:hover {
-        transform: scale(1.05);
-    }
-
     .preview-item img {
-        width: 110px;
-        height: 110px;
+        width: 100%;
+        height: 100%;
         object-fit: cover;
-        border-radius: 12px;
-        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
     }
 
-    /* Delete Button */
     .preview-item button {
         position: absolute;
-        top: -8px;
-        right: -8px;
-        background: #ef4444;
+        top: 5px;
+        right: 5px;
+        background: rgba(255,0,0,0.7);
         color: white;
         border: none;
         border-radius: 50%;
-        width: 24px;
-        height: 24px;
+        width: 22px;
+        height: 22px;
         font-size: 14px;
         cursor: pointer;
-        transition: 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.3s;
     }
 
         .preview-item button:hover {
-            background: #dc2626;
+            background: rgba(255,0,0,1);
+            transform: scale(1.1);
         }
 
-/* Submit Button */
-.submit-btn {
-    width: 100%;
-    padding: 14px;
-    border: none;
-    background: linear-gradient(135deg, #2563eb, #1d4ed8);
-    color: white;
-    font-size: 16px;
-    font-weight: 600;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-    .submit-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
+    .preview-item:hover {
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.15);
     }
 
-    .submit-btn:active {
-        transform: scale(0.98);
-    }
-
-/* Responsive */
+/* Responsive Styling */
 @media (max-width: 768px) {
-    .product-card {
-        width: 100%;
-        padding: 25px;
-    }
-
     .row {
         flex-direction: column;
+    }
+
+    .preview-item {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-card {
+        padding: 20px;
+    }
+
+    .submit-btn {
+        padding: 10px 20px;
+        font-size: 14px;
     }
 }

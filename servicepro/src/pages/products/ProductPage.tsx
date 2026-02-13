@@ -2,12 +2,21 @@ import React from 'react';
 import { NavMenu } from '../../components/layout/NavMenu';
 import { ProductImageGallery } from '../../components/common/ProductImageGallery';
 import "../../assets/css/ProductPage.css";
+import { CategoryNavbar } from "../../components/layout/CategoryNavbar";
 
 export const ProductPage: React.FC = () => {
     const productImages = [
         { src: "/tmt1.png", caption: "SR TMT Bars Supplier In Agra" },
         { src: "/myimage.png", caption: "TMT Steel Bars" },
         { src: "/SD.png", caption: "Cemment" },
+    ];
+    const categories = [
+        "TMT Bars",
+        "cemment",
+        "Binding Wire",
+        "Roofing Sheet",
+        "MS Pipe",
+        "Steel Angle",
     ];
 
     const relatedPosts = [
@@ -20,6 +29,7 @@ export const ProductPage: React.FC = () => {
     return (
         <>
             <NavMenu />
+            <CategoryNavbar categories={categories} />
 
             {/* ===== Hero Banner ===== */}
             <section className="product-hero">

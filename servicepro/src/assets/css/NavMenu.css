@@ -34,7 +34,7 @@
     font-size: 12px;
     font-weight: 500;
     letter-spacing: 1px;
-    color: #6b7280;
+    color: #111112;
     text-transform: uppercase;
 }
 
@@ -42,6 +42,7 @@
 /* ===== MENU ===== */
 .menu {
     display: flex;
+
     list-style: none;
     gap: 40px;
     margin: 0;

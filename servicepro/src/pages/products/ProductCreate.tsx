@@ -134,13 +134,14 @@ const ProductCreate: React.FC = () => {
                                 required
                             >
                                 <option value="">Select Category</option>
-                                <option value="Kitchen">Cemment</option>
-                                <option value="Bathroom">TMT Bar</option>
-                                <option value="Furniture">Sheets</option>
-                                <option value="Decor">Decor</option>
+                                    <option value="cemment">Cemment</option>
+                                    <option value="TMT Bar">TMT Bar</option>
+                                    <option value="Binding Wire">Binding Wire</option>
+                                    <option value="Steel Angle">steel-angle</option>
                             </select>
                         </div>
-                    </div>
+                        </div>
+   
 
                     <div className="form-group">
                         <label>Upload Images (Max 4)</label>
