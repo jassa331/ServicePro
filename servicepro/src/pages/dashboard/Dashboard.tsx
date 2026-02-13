@@ -1,94 +1,70 @@
-import "../../assets/css/Dashboard.css"; // capital D
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import "../../assets/css/Dashboard.css";
 
-const Dashboard = () => {
+interface Product {
+    id: string;
+    name: string;
+    price: number;
+    category: string;
+    imageUrls: string[];
+}
+
+export const Dashboard: React.FC = () => {
+    const [products, setProducts] = useState<Product[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        // Fetch all products to show some stats
+        axios.get<Product[]>("https://systemapi.runasp.net/api/Product")
+            .then(res => setProducts(res.data))
+            .catch(err => console.error(err))
+            .finally(() => setLoading(false));
+    }, []);
+
+    const totalProducts = products.length;
+    const categories = Array.from(new Set(products.map(p => p.category)));
+
+    if (loading) return <div className="loader">Loading Dashboard...</div>;
+
     return (
-        <div className="cs-dashboard">
+        <div className="dashboard-container">
+            <h1>Dashboard</h1>
 
-            {/* SUMMARY STRIP */}
-            <div className="cs-summary-strip">
-
-                {/* Missed */}
-                <div className="cs-missed">
-                    <h3>Missed</h3>
-                    <span className="small">Today</span>
-
-                    <div className="row">
-                        <span>↪</span> <b>5</b> Clock-In
-                    </div>
-                    <div className="row">
-                        <span>↩</span> <b>4</b> Clock-Out
-                    </div>
+            <div className="dashboard-cards">
+                <div className="card">
+                    <h2>Total Products</h2>
+                    <p>{totalProducts}</p>
                 </div>
-
-                {/* My Open Tasks */}
-                <div className="cs-block">
-                    <h4>My Open Tasks</h4>
-                    <p className="muted">My Current Open Tasks</p>
-                    <h2>618</h2>
-                    <p className="link">Add New</p>
-                    <p className="yellow">0 Due Today</p>
+                <div className="card">
+                    <h2>Total Categories</h2>
+                    <p>{categories.length}</p>
                 </div>
-
-                {/* Authorization */}
-                <div className="cs-block">
-                    <h4>Authorization Expiration</h4>
-                    <p className="muted">Expiring in next 30 days</p>
-                    <h2>12</h2>
-                    <p className="yellow">0 Expiring Today</p>
-                </div>
-
-                {/* Open Shifts */}
-                <div className="cs-block">
-                    <h4>Open Shifts</h4>
-                    <p className="muted">Open Shifts in the Office</p>
-                    <h2>1144</h2>
-                    <p className="link">View Open Shift Calendar</p>
-                </div>
-
-                {/* Compliance */}
-                <div className="cs-block compliance">
-                    <h4>Compliance Expiration</h4>
-                    <p className="muted">Expired / Expiring in 30 days</p>
-
-                    <div className="compliance-box">
-                        <div className="expired">
-                            <b>99</b>
-                            <span>Already Expired</span>
-                        </div>
-                        <div className="expiring">
-                            <b>0</b>
-                            <span>Expiring in 30 Days</span>
-                        </div>
-                    </div>
-                </div>
-
             </div>
 
-            {/* TABLE */}
-            <div className="cs-table">
-                <h3>Shift(s) Pending Confirmation</h3>
-                <p className="muted">Confirmation Request to Caregivers</p>
-
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Caregiver</th>
-                            <th>Schedule Date / Time</th>
-                            <th>Address</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td colSpan={3} className="empty">
-                                ⚠ No Record(s) Found.
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div className="category-overview">
+                <h2>Categories</h2>
+                <ul>
+                    {categories.map(cat => (
+                        <li key={cat}>{cat}</li>
+                    ))}
+                </ul>
             </div>
 
+            <div className="latest-products">
+                <h2>Latest Products</h2>
+                <div className="products-grid">
+                    {products.slice(0, 6).map(product => (
+                        <div key={product.id} className="product-card">
+                            {product.imageUrls[0] && (
+                                <img src={product.imageUrls[0]} alt={product.name} width={100} />
+                            )}
+                            <h4>{product.name}</h4>
+                            <p>₹{product.price}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
         </div>
     );
 };
-
-export default Dashboard;
