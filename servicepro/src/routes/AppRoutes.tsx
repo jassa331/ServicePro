@@ -7,6 +7,8 @@ import LoginPage from "../pages/auth/LoginPage";
 import ProtectedRoute from "./ProtectedRoute";
 import { ProductPage } from "../pages/products/ProductPage";
 import ProductCreate from "../pages/products/ProductCreate";
+import { CategoryPage } from "../pages/products/CategoryPage";
+
 
 
 export default function AppRoutes() {
@@ -23,7 +25,9 @@ export default function AppRoutes() {
                     {/* Main layout wrapper */}
                    
                         {/* Public route */}
-                        <Route path="/products" element={<ProductPage />} />
+                    <Route path="/products" element={<ProductPage />} />
+                    <Route path="/category/:categoryName" element={<CategoryPage />} />
+
                     <Route
                         path="/admin/product-create"
                         element={
