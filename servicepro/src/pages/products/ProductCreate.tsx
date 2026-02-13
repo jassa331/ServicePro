@@ -59,7 +59,7 @@ const ProductCreate: React.FC = () => {
         images.forEach(img => formData.append("images", img));
 
         try {
-            const response = await fetch("https://localhost:7046/api/Product", {
+            const response = await fetch("http://systemapi.runasp.net/api/Product", {
                 method: "POST",
                 headers: {
                     Authorization: `Bearer ${token}`
