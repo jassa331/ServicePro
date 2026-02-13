@@ -1,11 +1,15 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import MainLayout from "../components/layout/MainLayout";
+
 import CustomersList from "../pages/customers/CustomersList";
-import Dashboard from "../pages/dashboard/Dashboard";
+import { Dashboard } from "../pages/dashboard/Dashboard";
 import { AuthProvider } from "../context/AuthProvider";
 import LoginPage from "../pages/auth/LoginPage";
 import ProtectedRoute from "./ProtectedRoute";
 import { ProductPage } from "../pages/products/ProductPage";
+import ProductCreate from "../pages/products/ProductCreate";
+import { CategoryPage } from "../pages/products/CategoryPage";
+
+
 
 export default function AppRoutes() {
     return (
@@ -19,9 +23,19 @@ export default function AppRoutes() {
                     <Route path="/login" element={<LoginPage />} />
 
                     {/* Main layout wrapper */}
-                    <Route element={<MainLayout />}>
+                   
                         {/* Public route */}
-                        <Route path="/products" element={<ProductPage />} />
+                    <Route path="/products" element={<ProductPage />} />
+                    <Route path="/category/:categoryName" element={<CategoryPage />} />
+
+                    <Route
+                        path="/admin/product-create"
+                        element={
+                            <ProtectedRoute>
+                                <ProductCreate />
+                            </ProtectedRoute>
+                        }
+                    />
 
                         {/* Protected routes */}
                         <Route
@@ -40,7 +54,7 @@ export default function AppRoutes() {
                                 </ProtectedRoute>
                             }
                         />
-                    </Route>
+                   
                 </Routes>
             </BrowserRouter>
         </AuthProvider>
