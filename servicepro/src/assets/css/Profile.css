@@ -1,0 +1,90 @@
+/* ===== Background ===== */
+.profile-wrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(white,grey);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ===== Card ===== */
+.profile-card {
+    width: 420px;
+    background: linear-gradient(145deg, #ffffff, #f1f1f1);
+    padding: 40px 30px;
+    border-radius: 18px;
+    text-align: center;
+    color: #333;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e0e0e0;
+    transition: transform 0.3s ease;
+}
+
+
+    .profile-card:hover {
+        transform: translateY(-8px);
+    }
+
+/* ===== Avatar ===== */
+.profile-avatar {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 20px;
+    background: white;
+    color: #764ba2;
+    font-size: 38px;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ===== Name & Role ===== */
+.profile-name {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.profile-role {
+    font-size: 14px;
+    background: rgba(255,255,255,0.3);
+    padding: 5px 12px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 25px;
+}
+
+/* ===== Info Section ===== */
+.profile-info {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.info-row {
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+    .info-row span {
+        font-size: 13px;
+        opacity: 0.8;
+    }
+
+    .info-row p {
+        margin: 4px 0 0;
+        font-weight: 600;
+    }
+
+/* ===== Loader ===== */
+.loader {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 600;
+}

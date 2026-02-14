@@ -8,3 +8,4 @@ module.exports = [
         rules: {}
     }
 ];
+// This file allows you to configure ESLint according to your project's needs, so that you
