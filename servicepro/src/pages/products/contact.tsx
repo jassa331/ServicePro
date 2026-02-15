@@ -48,7 +48,7 @@ export default function ProductContact() {
     setSubmitting(true);
     setErrorMessage("");
     try {
-        const res = await fetch("https://localhost:7046/api/contact", {
+        const res = await fetch("https://systemapi.runasp.net/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

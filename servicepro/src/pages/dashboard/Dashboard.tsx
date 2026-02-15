@@ -41,7 +41,7 @@ export const Dashboard: React.FC = () => {
     // ✅ Fetch Contacts Function (Declared BEFORE useEffect)
     const fetchContacts = async () => {
         try {
-            const res = await axios.get("https://localhost:7046/api/contact");
+            const res = await axios.get("https://systemapi.runasp.net/api/contact");
             const newCount = res.data.length;
 
             if (contactCount !== 0 && newCount > contactCount) {

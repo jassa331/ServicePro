@@ -21,7 +21,7 @@ const ContactList: React.FC = () => {
 
     const fetchContacts = async () => {
         try {
-            const res = await fetch("https://localhost:7046/api/contact");
+            const res = await fetch("https://systemapi.runasp.net/api/contact");
             if (!res.ok) throw new Error("Failed to fetch data");
 
             const data = await res.json();
