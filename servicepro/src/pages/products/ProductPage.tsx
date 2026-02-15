@@ -3,6 +3,7 @@ import { NavMenu } from '../../components/layout/NavMenu';
 import { ProductImageGallery } from '../../components/common/ProductImageGallery';
 import "../../assets/css/ProductPage.css";
 import { CategoryNavbar } from "../../components/layout/CategoryNavbar";
+import { useNavigate } from "react-router-dom";
 
 export const ProductPage: React.FC = () => {
     const productImages = [
@@ -18,6 +19,7 @@ export const ProductPage: React.FC = () => {
         "MS Pipe",
         "Steel Angle",
     ];
+    const navigate = useNavigate();
 
     const relatedPosts = [
         "Specification of Tata TMT Bars",
@@ -93,7 +95,12 @@ export const ProductPage: React.FC = () => {
                         We are the leading Authorized Wholesale Dealer of Binding Wire, Roofing Sheet, MS Square Pipe, Mild Steel Angle etc.
                         We are always focused towards presenting a supreme range of products for our customers.
                     </p>
-                    <button className="btn btn-primary">+ Read More</button>
+                    <button
+                        className="btn btn-primary"
+                        onClick={() => navigate("/profile")}
+                    >
+                        + Read More
+                    </button>
                 </div>
 
                 <div className="company-info-cards">
@@ -119,7 +126,7 @@ export const ProductPage: React.FC = () => {
                     </div>
                     <div className="info-card">
                         <h4>GST No</h4>
-                        <p>09AARFB6974F1ZV</p>
+                        <p>09JFUPS2230L1ZL</p>
                     </div>
                 </div>
 

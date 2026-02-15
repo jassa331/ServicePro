@@ -78,6 +78,15 @@
         margin: 4px 0 0;
         font-weight: 600;
     }
+.company-card {
+    width: 700px;
+    text-align: left;
+}
+.info-row p {
+    margin: 6px 0 0;
+    font-weight: 500;
+    line-height: 1.5;
+}
 
 /* ===== Loader ===== */
 .loader {

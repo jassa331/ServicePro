@@ -9,7 +9,8 @@ import {
     ResponsiveContainer
 } from "recharts";
 import "../../assets/css/Dashboard.css";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom";
+import { FaBell } from "react-icons/fa";
 
 interface Product {
     id: string;
@@ -20,9 +21,16 @@ interface Product {
 }
 
 export const Dashboard: React.FC = () => {
+
+    const navigate = useNavigate();
+
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
 
+    const [contactCount, setContactCount] = useState(0);
+    const [hasNewNotification, setHasNewNotification] = useState(false);
+
+    // ✅ Fetch Products
     useEffect(() => {
         axios.get<Product[]>("https://systemapi.runasp.net/api/Product")
             .then(res => setProducts(res.data))
@@ -30,10 +38,44 @@ export const Dashboard: React.FC = () => {
             .finally(() => setLoading(false));
     }, []);
 
+    // ✅ Fetch Contacts Function (Declared BEFORE useEffect)
+    const fetchContacts = async () => {
+        try {
+            const res = await axios.get("https://localhost:7046/api/contact");
+            const newCount = res.data.length;
+
+            if (contactCount !== 0 && newCount > contactCount) {
+                setHasNewNotification(true);
+            }
+
+            setContactCount(newCount);
+
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    // ✅ Check Contacts Every 5 Seconds
+    useEffect(() => {
+        fetchContacts();
+
+        const interval = setInterval(() => {
+            fetchContacts();
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, []);
+
+    const handleBellClick = () => {
+        setHasNewNotification(false);
+        navigate("/contactList");
+    };
+
+    if (loading) return <div className="loader">Loading Dashboard...</div>;
+
     const totalProducts = products.length;
     const categories = Array.from(new Set(products.map(p => p.category)));
 
-    // Category count for pie chart
     const categoryData = categories.map(cat => ({
         name: cat,
         value: products.filter(p => p.category === cat).length
@@ -41,24 +83,28 @@ export const Dashboard: React.FC = () => {
 
     const COLORS = ["#f78b07", "#32baf0", "#f7ec16", "#4ce684", "#ab851f"];
 
-    if (loading) return <div className="loader">Loading Dashboard...</div>;
-
     return (
         <div className="dashboard-container">
 
-        
             {/* Navbar */}
             <div className="dashboard-navbar">
                 <h1>Dashboard</h1>
-            
+
                 <ul className="menu">
                     <li><Link to="/products">User-Portal</Link></li>
                     <li><Link to="/admin/product-create">Add-Product</Link></li>
                     <li><Link to="/profile">Profile</Link></li>
                     <li><Link to="/">Logout</Link></li>
 
+                    <div className="notification" onClick={handleBellClick}>
+                        <FaBell className="bell-icon" />
+                        {hasNewNotification && (
+                            <span className="notification-dot"></span>
+                        )}
+                    </div>
                 </ul>
             </div>
+
             {/* Stats Cards */}
             <div className="dashboard-cards">
                 <div className="card">
@@ -84,8 +130,11 @@ export const Dashboard: React.FC = () => {
                             outerRadius={100}
                             label
                         >
-                            {categoryData.map((entry, index) => (
-                                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                            {categoryData.map((_, index) => (
+                                <Cell
+                                    key={`cell-${index}`}
+                                    fill={COLORS[index % COLORS.length]}
+                                />
                             ))}
                         </Pie>
                         <Tooltip />
@@ -101,7 +150,10 @@ export const Dashboard: React.FC = () => {
                     {products.slice(0, 6).map(product => (
                         <div key={product.id} className="product-card">
                             {product.imageUrls[0] && (
-                                <img src={product.imageUrls[0]} alt={product.name} />
+                                <img
+                                    src={product.imageUrls[0]}
+                                    alt={product.name}
+                                />
                             )}
                             <h4>{product.name}</h4>
                             <p>₹{product.price}</p>
@@ -109,6 +161,7 @@ export const Dashboard: React.FC = () => {
                     ))}
                 </div>
             </div>
+
         </div>
     );
 };

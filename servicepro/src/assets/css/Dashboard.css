@@ -4,6 +4,28 @@
     min-height: 100vh;
     font-family: 'Segoe UI', sans-serif;
 }
+.notification {
+    position: relative;
+    display: inline-block;
+}
+
+.bell-icon {
+    font-size: 22px;
+    color: #1e293b;
+    cursor: pointer;
+}
+
+/* Small red dot */
+.notification-dot {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 8px;
+    height: 8px;
+    background-color: #ef4444;
+    border-radius: 50%;
+    border: 2px solid white; /* clean look */
+}
 
 /* Navbar */
 .dashboard-navbar {

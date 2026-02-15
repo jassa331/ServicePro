@@ -13,30 +13,59 @@
     box-shadow: 0 4px 20px rgba(0,0,0,0.25);
 }
 
-/* ===== LOGO ===== */
-/* ===== LOGO WRAPPER ===== */
 .logo {
     display: flex;
     flex-direction: column;
-    line-height: 1.1;
+    gap: 4px;
+    min-width: 350px;
 }
 
-/* Main Bold Initial Logo */
+.logo-top {
+    display: flex;
+    align-items: baseline;
+    gap: 15px;
+}
+
 .logo-main {
     font-size: 26px;
     font-weight: 800;
-    letter-spacing: 2px;
+    color: #111827;
+    white-space: nowrap; /* prevent break */
+}
+
+.logo-sub {
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+    white-space: nowrap;
+}
+
+.logo-bottom {
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+    gap: 4px;
+}
+
+/* Location Style */
+.location {
+    white-space: nowrap; /* prevent line break */
+    color: #6b7280;
+    font-weight: 500;
+}
+
+/* GST Style Highlight */
+.gst {
+    white-space: nowrap; /* prevent GST breaking */
+    font-weight: 700;
     color: #111827;
 }
 
-/* Small Subtitle */
-.logo-sub {
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    color: #111112;
-    text-transform: uppercase;
+.gst {
+    font-weight: 600;
+    color: #111827;
 }
+
 
 
 /* ===== MENU ===== */
@@ -133,4 +162,103 @@
             display: block;
             text-align: center;
         }
+}
+/* ===== TABLET VIEW ===== */
+@media (max-width: 1024px) {
+
+    .navbar {
+        padding: 15px 25px;
+    }
+
+    .logo {
+        min-width: auto;
+    }
+
+    .logo-main {
+        font-size: 22px;
+    }
+
+    .logo-sub {
+        font-size: 13px;
+    }
+}
+
+
+/* ===== MOBILE VIEW ===== */
+@media (max-width: 768px) {
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        padding: 15px 20px;
+    }
+
+    .logo {
+        width: 100%;
+    }
+
+    .logo-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .logo-bottom {
+        gap: 2px;
+    }
+
+    .logo-main {
+        font-size: 20px;
+    }
+
+    .logo-sub {
+        font-size: 12px;
+    }
+
+    .menu {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+    }
+
+        .menu li {
+            width: 100%;
+        }
+
+            .menu li a {
+                display: block;
+                padding: 8px 0;
+            }
+
+    .contact-btn {
+        width: 100%;
+    }
+
+        .contact-btn a {
+            display: block;
+            text-align: center;
+        }
+}
+
+
+/* ===== SMALL PHONES (iPhone SE etc.) ===== */
+@media (max-width: 480px) {
+
+    .logo-main {
+        font-size: 18px;
+    }
+
+    .logo-sub {
+        font-size: 11px;
+    }
+
+    .location,
+    .gst {
+        font-size: 11px;
+    }
+
+    .menu li a {
+        font-size: 14px;
+    }
 }

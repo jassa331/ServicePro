@@ -9,6 +9,9 @@ import { ProductPage } from "../pages/products/ProductPage";
 import Profile from "../pages/auth/Profile/profile";
 import ProductCreate from "../pages/products/ProductCreate";
 import { CategoryPage } from "../pages/products/CategoryPage";
+import  Contact  from "../pages/products/contact";
+import ContactList from "../pages/products/ContactList";
+
 
 
 
@@ -28,7 +31,11 @@ export default function AppRoutes() {
                         {/* Public route */}
                     <Route path="/products" element={<ProductPage />} />
                     <Route path="/category/:categoryName" element={<CategoryPage />} />
-                    <Route path="/profile" element={<Profile />} />                    <Route
+                    <Route path="/profile" element={<Profile />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/contactList" element={<ContactList />} />
+
+                    <Route
                         path="/admin/product-create"
                         element={
                             <ProtectedRoute>
