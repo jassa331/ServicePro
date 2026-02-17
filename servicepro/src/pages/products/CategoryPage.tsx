@@ -17,7 +17,9 @@ export const CategoryPage: React.FC = () => {
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
 
-    // Map frontend URL slug → backend category
+    // Store selected image per product
+    const [selectedImages, setSelectedImages] = useState<{ [key: string]: string }>({});
+
     const categoryMap: { [key: string]: string } = {
         cemment: "cemment",
         "tmt-bars": "TMT Bar",
@@ -37,7 +39,13 @@ export const CategoryPage: React.FC = () => {
                 const filtered = res.data.filter(
                     p => p.category.toLowerCase() === backendCategory.toLowerCase()
                 );
-                setProducts(filtered);
+
+                // Remove duplicate IDs (safety)
+                const uniqueProducts = Array.from(
+                    new Map(filtered.map(p => [p.id, p])).values()
+                );
+
+                setProducts(uniqueProducts);
             })
             .catch(err => console.error(err))
             .finally(() => setLoading(false));
@@ -55,25 +63,58 @@ export const CategoryPage: React.FC = () => {
                 {products.length === 0 ? (
                     <p className="no-products">No products found.</p>
                 ) : (
-                    products.map(product => (
-                        <div key={product.id} className="product-card">
-                            {product.imageUrls?.length > 0 && (
-                                <img
-                                    src={product.imageUrls[0]}
-                                    alt={product.name}
-                                    className="product-image"
-                                />
-                            )}
+                    products.map(product => {
+                        const currentImage =
+                            selectedImages[product.id] || product.imageUrls?.[0];
 
-                            <div className="product-info">
-                                <h3>{product.name}</h3>
-                                <p className="category">Category: {product.category}</p>
-                                <p className="price">₹ {product.price}</p>
-                                {product.description && <p className="description">{product.description}</p>}
-                                <button className="buy-btn">View Details</button>
+                        return (
+                            <div key={product.id} className="amazon-card">
+
+                                {/* LEFT THUMBNAILS */}
+                                <div className="thumbnail-container">
+                                    {product.imageUrls?.map((img, index) => (
+                                        <img
+                                            key={index}
+                                            src={img}
+                                            alt="thumb"
+                                            className={`thumbnail ${currentImage === img ? "active" : ""}`}
+                                            onClick={() =>
+                                                setSelectedImages(prev => ({
+                                                    ...prev,
+                                                    [product.id]: img
+                                                }))
+                                            }
+                                        />
+                                    ))}
+                                </div>
+
+                                {/* MAIN IMAGE */}
+                                <div className="main-image-container">
+                                    <img
+                                        src={currentImage}
+                                        alt={product.name}
+                                        className="main-image"
+                                    />
+                                </div>
+
+                                {/* PRODUCT INFO */}
+                                <div className="product-info">
+                                    <h3>{product.name}</h3>
+                                    <p className="category">{product.category}</p>
+                                    <p className="price">₹ {product.price}</p>
+                                    {product.description && (
+                                        <p className="description">
+                                            {product.description}
+                                        </p>
+                                    )}
+                                    <button className="buy-btn">
+                                        View Details
+                                    </button>
+                                </div>
+
                             </div>
-                        </div>
-                    ))
+                        );
+                    })
                 )}
             </div>
         </div>
