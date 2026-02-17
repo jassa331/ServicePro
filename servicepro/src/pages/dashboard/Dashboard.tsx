@@ -29,6 +29,13 @@ export const Dashboard: React.FC = () => {
 
     const [contactCount, setContactCount] = useState(0);
     const [hasNewNotification, setHasNewNotification] = useState(false);
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+
+        if (!token) {
+            navigate("/");
+        }
+    }, [navigate]);
 
     // ✅ Fetch Products
     useEffect(() => {
