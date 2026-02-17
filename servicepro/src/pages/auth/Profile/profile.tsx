@@ -3,35 +3,16 @@ import axios from "axios";
 import "../../../assets/css/Profile.css";
 import { NavMenu } from '../../../components/layout/NavMenu';
 
-interface ProfileData {
-    id: string;
-    name: string;
-    email: string;
-    phoneNumber: string;
-    role: string;
-    createdAt: string;
-}
+
 
 const Profile: React.FC = () => {
-    const [profile, setProfile] = useState<ProfileData | null>(null);
 
     useEffect(() => {
-        const token = localStorage.getItem("token");
-
-        axios.get("https://systemapi.runasp.net/api/auth/profile", {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        })
-            .then(res => setProfile(res.data))
+        axios.get("https://systemapi.runasp.net/api/auth/profile")
             .catch(() => {
-                localStorage.removeItem("token");
-                window.location.href = "/login";
+                console.log("Profile fetch failed");
             });
     }, []);
-
-    if (!profile) return <div className="loader">Loading Profile...</div>;
-
     return (
         <>
             <NavMenu />
