@@ -22,7 +22,7 @@ const ProductDetails: React.FC = () => {
     useEffect(() => {
         if (!id) return;
 
-        axios.get("https://localhost:7046/api/Product/by-category")
+        axios.get("https://systemapi.runasp.net/api/Product/by-category")
             .then(res => {
                 // API returns category wise
                 const allProducts = res.data.flatMap((cat: any) => cat.products);
