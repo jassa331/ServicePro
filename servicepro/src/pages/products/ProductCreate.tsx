@@ -1,4 +1,5 @@
-﻿import React, { useState } from "react";
+﻿import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "../../assets/css/product.css";
 import { NavMenu } from '../../components/layout/NavMenu';
 
@@ -11,7 +12,14 @@ const ProductCreate: React.FC = () => {
     const [images, setImages] = useState<File[]>([]);
     const [previewUrls, setPreviewUrls] = useState<string[]>([]);
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
+    useEffect(() => {
+        const token = localStorage.getItem("token");
 
+        if (!token) {
+            navigate("/");
+        }
+    }, [navigate]);
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (!e.target.files) return;
 

@@ -11,6 +11,7 @@ import ProductCreate from "../pages/products/ProductCreate";
 import { CategoryPage } from "../pages/products/CategoryPage";
 import  Contact  from "../pages/products/contact";
 import ContactList from "../pages/products/ContactList";
+import ProductDetails from "../pages/products/ProductDetails";
 
 
 
@@ -34,6 +35,7 @@ export default function AppRoutes() {
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/contactList" element={<ContactList />} />
+                    <Route path="/product/:id" element={<ProductDetails />} />
 
                     <Route
                         path="/admin/product-create"

@@ -1,7 +1,8 @@
 ﻿import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../../assets/css/CategoryPage.css";
+import { NavMenu } from '../../components/layout/NavMenu';
 
 interface Product {
     id: string;
@@ -16,6 +17,7 @@ export const CategoryPage: React.FC = () => {
     const { categoryName } = useParams();
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();  
 
     // Store selected image per product
     const [selectedImages, setSelectedImages] = useState<{ [key: string]: string }>({});
@@ -54,6 +56,8 @@ export const CategoryPage: React.FC = () => {
     if (loading) return <div className="loader">Loading Products...</div>;
 
     return (
+         <>
+            <NavMenu />
         <div className="category-container">
             <h1 className="category-title">
                 {categoryName?.toUpperCase()} PRODUCTS
@@ -107,9 +111,13 @@ export const CategoryPage: React.FC = () => {
                                             {product.description}
                                         </p>
                                     )}
-                                    <button className="buy-btn">
+                                    <button
+                                        className="buy-btn"
+                                        onClick={() => navigate(`/product/${product.id}`)}
+                                    >
                                         View Details
                                     </button>
+
                                 </div>
 
                             </div>
@@ -117,6 +125,7 @@ export const CategoryPage: React.FC = () => {
                     })
                 )}
             </div>
-        </div>
+            </div>
+        </>
     );
 };

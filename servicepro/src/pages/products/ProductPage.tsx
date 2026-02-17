@@ -36,9 +36,8 @@ export const ProductPage: React.FC = () => {
             {/* ===== Hero Banner ===== */}
             <section className="product-hero">
                 <div className="hero-content">
-                    <h1>Tata Tiscon TMT Bars</h1>
-                    <p>Premium quality steel for durable construction and infrastructure.</p>
-                    <button className="btn btn-primary">Request a Quote</button>
+                    <h1>Building Strength. Delivering Trust</h1>
+                    <p>Welcome to S.R ENTERPRISE, your reliable partner for premium quality Cement, Iron & Steel products. We specialize in supplying top-grade construction materials that ensure strength, durability, and long-lasting performance for every project — from residential homes to large infrastructure developments.</p>
                 </div>
                 <div className="hero-image">
                     <img src="/ij.jpg" alt="Tata Tiscon TMT Bars" />
