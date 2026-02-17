@@ -3,7 +3,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../../assets/css/LoginPage.css"; // CSS
-import logo from "../../assets/images/logo.png"; // logo
+import logo from "../../assets/images/mylogo.png.jpeg"; // logo
 
 export default function LoginPage() {
     const { login } = useContext(AuthContext);
