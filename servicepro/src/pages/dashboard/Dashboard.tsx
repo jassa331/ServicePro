@@ -61,7 +61,10 @@ export const Dashboard: React.FC = () => {
             console.error(error);
         }
     };
-
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        navigate("/");
+    };
     // ✅ Check Contacts Every 5 Seconds
     useEffect(() => {
         fetchContacts();
@@ -74,7 +77,7 @@ export const Dashboard: React.FC = () => {
     }, []);
 
     const handleBellClick = () => {
-        setHasNewNotification(false);
+        setHasNewNotification(false);   
         navigate("/contactList");
     };
 
@@ -100,8 +103,9 @@ export const Dashboard: React.FC = () => {
                 <ul className="menu">
                     <li><Link to="/products">User-Portal</Link></li>
                     <li><Link to="/admin/product-create">Add-Product</Link></li>
+                    <li><Link to="/product-listing">Manage-Products</Link></li>
                     <li><Link to="/profile">Profile</Link></li>
-                    <li><Link to="/">Logout</Link></li>
+                    <li onClick={handleLogout}>Logout</li>
 
                     <div className="notification" onClick={handleBellClick}>
                         <FaBell className="bell-icon" />

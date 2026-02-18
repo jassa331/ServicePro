@@ -12,8 +12,8 @@ import { CategoryPage } from "../pages/products/CategoryPage";
 import  Contact  from "../pages/products/contact";
 import ContactList from "../pages/products/ContactList";
 import ProductDetails from "../pages/products/ProductDetails";
-
-
+import ProductListing from "../pages/products/ListingProduct";
+import AdminProductDetails from "../pages/products/AdminProductDetails";
 
 
 export default function AppRoutes() {
@@ -42,6 +42,22 @@ export default function AppRoutes() {
                         element={
                             <ProtectedRoute>
                                 <ProductCreate />
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route
+                        path="/admin/product/:id"
+                        element={
+                            <ProtectedRoute>
+                                <AdminProductDetails />
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route
+                        path="/product-listing"
+                        element={
+                            <ProtectedRoute>
+                                <ProductListing />
                             </ProtectedRoute>
                         }
                     />
