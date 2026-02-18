@@ -1,0 +1,264 @@
+/* ===== NAVBAR MAIN ===== */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 60px;
+    background: white;
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 350px;
+}
+
+.logo-top {
+    display: flex;
+    align-items: baseline;
+    gap: 15px;
+}
+
+.logo-main {
+    font-size: 26px;
+    font-weight: 800;
+    color: #111827;
+    white-space: nowrap; /* prevent break */
+}
+
+.logo-sub {
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+    white-space: nowrap;
+}
+
+.logo-bottom {
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+    gap: 4px;
+}
+
+/* Location Style */
+.location {
+    white-space: nowrap; /* prevent line break */
+    color: #6b7280;
+    font-weight: 500;
+}
+
+/* GST Style Highlight */
+.gst {
+    white-space: nowrap; /* prevent GST breaking */
+    font-weight: 700;
+    color: #111827;
+}
+
+.gst {
+    font-weight: 600;
+    color: #111827;
+}
+
+
+
+/* ===== MENU ===== */
+.menu {
+    display: flex;
+
+    list-style: none;
+    gap: 40px;
+    margin: 0;
+    padding: 0;
+}
+
+    /* ===== MENU LINKS ===== */
+    .menu li a {
+        text-decoration: none;
+        color: #1a1b1c;
+        font-size: 15px;
+        font-weight: 500;
+        position: relative;
+        padding: 5px 0;
+        transition: all 0.3s ease;
+    }
+
+        /* Hover Glow Effect */
+        .menu li a:hover {
+            color: #121111;
+        }
+
+        /* Animated underline */
+        .menu li a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0%;
+            height: 2px;
+            background: black;
+            transition: width 0.3s ease;
+        }
+
+        .menu li a:hover::after {
+            width: 100%;
+        }
+
+/* ===== CALL BUTTON ===== */
+.contact-btn a {
+    background: BLACK;
+    color: white;
+    padding: 11px 22px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 14px rgba(249,115,22,0.4);
+}
+
+    .contact-btn a:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(249,115,22,0.6);
+    }
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 992px) {
+
+    .navbar {
+        padding: 18px 30px;
+    }
+
+    .menu {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .menu {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .contact-btn {
+        width: 100%;
+    }
+
+        .contact-btn a {
+            display: block;
+            text-align: center;
+        }
+}
+/* ===== TABLET VIEW ===== */
+@media (max-width: 1024px) {
+
+    .navbar {
+        padding: 15px 25px;
+    }
+
+    .logo {
+        min-width: auto;
+    }
+
+    .logo-main {
+        font-size: 22px;
+    }
+
+    .logo-sub {
+        font-size: 13px;
+    }
+}
+
+
+/* ===== MOBILE VIEW ===== */
+@media (max-width: 768px) {
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        padding: 15px 20px;
+    }
+
+    .logo {
+        width: 100%;
+    }
+
+    .logo-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .logo-bottom {
+        gap: 2px;
+    }
+
+    .logo-main {
+        font-size: 20px;
+    }
+
+    .logo-sub {
+        font-size: 12px;
+    }
+
+    .menu {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+    }
+
+        .menu li {
+            width: 100%;
+        }
+
+            .menu li a {
+                display: block;
+                padding: 8px 0;
+            }
+
+    .contact-btn {
+        width: 100%;
+    }
+
+        .contact-btn a {
+            display: block;
+            text-align: center;
+        }
+}
+
+
+/* ===== SMALL PHONES (iPhone SE etc.) ===== */
+@media (max-width: 480px) {
+
+    .logo-main {
+        font-size: 18px;
+    }
+
+    .logo-sub {
+        font-size: 11px;
+    }
+
+    .location,
+    .gst {
+        font-size: 11px;
+    }
+
+    .menu li a {
+        font-size: 14px;
+    }
+}

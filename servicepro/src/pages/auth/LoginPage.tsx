@@ -3,7 +3,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../../assets/css/LoginPage.css"; // CSS
-import logo from "../../assets/images/logo.png"; // logo
+import logo from "../../assets/images/mylogo.png.jpeg"; // logo
 
 export default function LoginPage() {
     const { login } = useContext(AuthContext);
@@ -22,13 +22,13 @@ export default function LoginPage() {
         setError("");
 
         try {
-            const res = await axios.post("https://hoste.runasp.net/api/auth/login", {
+            const res = await axios.post("https://systemapi.runasp.net/api/auth/login", {
                 email,
                 password
             });
 
             login(res.data.token); // remove 2nd argument
-            navigate("/"); // redirect after login
+            navigate("/dashboard"); // redirect after login
         } catch (err: any) {
             setError("Invalid credentials");
         }

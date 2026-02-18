@@ -1,0 +1,110 @@
+/* Background */
+.contact-container {
+    min-height: 100vh;
+    padding: 50px;
+    background: linear-gradient(135deg, #f0f4ff, #f9fafc);
+    display: flex;
+    justify-content: center;
+}
+
+/* Card */
+.contact-card {
+    width: 100%;
+    max-width: 1200px;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+/* Title */
+.contact-title {
+    margin-bottom: 25px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+/* Table wrapper for scroll */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+/* Table */
+.contact-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+    .contact-table thead {
+        background-color: #f1f5f9;
+    }
+
+    .contact-table th {
+        text-align: left;
+        padding: 14px;
+        font-weight: 600;
+        color: #334155;
+    }
+
+    .contact-table td {
+        padding: 14px;
+        border-top: 1px solid #e2e8f0;
+        color: #475569;
+    }
+
+    .contact-table tbody tr {
+        transition: all 0.2s ease;
+    }
+
+        .contact-table tbody tr:hover {
+            background-color: #f8fafc;
+            transform: scale(1.01);
+        }
+
+/* Product Badge */
+.product-badge {
+    background: #e0f2fe;
+    color: #0369a1;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* Message column */
+.message-cell {
+    max-width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* States */
+.loading {
+    color: #2563eb;
+}
+
+.error {
+    color: #dc2626;
+    font-weight: 500;
+}
+
+.no-data {
+    color: #64748b;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

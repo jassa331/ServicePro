@@ -1,0 +1,117 @@
+/* ====== ROOT LAYOUT ====== */
+.layout {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* ====== SIDEBAR ====== */
+.sidebar {
+    width: 7px;
+    min-width: 24px;
+    background-color: #0b4da2;
+    color: #fff;
+    padding: 20px;
+    position: relative;
+    z-index: 1000;
+}
+.search-input {
+    padding: 6px 1px;
+    border-radius: 1px;
+    border: 1px solid #ccc;
+    margin-left: auto;
+}
+.icon-btn {
+    background-color: #ffffff !important; /* ALWAYS white */
+    border: 1px solid #e5e7eb;
+    padding: 4px 6px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+
+    .icon-btn i {
+        color: #000000; /* PURE BLACK */
+        font-size: 14px;
+    }
+
+    .icon-btn:hover,
+    .icon-btn:active,
+    .icon-btn:focus,
+    .icon-btn:focus-visible {
+        background-color: #ffffff !important; /* no color change */
+        outline: none;
+        box-shadow: none;
+    }
+button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* ====== SIDEBAR LOGO ====== */
+.sidebar-logo {
+    display: flex;
+    align-items: flex-start; /* top align */
+    justify-content: center; /* horizontally center */
+    margin-top: 0;
+    border-bottom: none;
+}
+
+    .sidebar-logo img {
+        max-width: 60px;
+        height: 40; /* aspect ratio maintain hove */
+    }
+/* MENU spacing */
+.sidebar-menu {
+    margin-top: 2px;
+}
+
+    /* Sidebar links */
+    .sidebar a {
+        display: block;
+        color: #fff;
+        text-decoration: none;
+        margin: 14px 0;
+        font-size: 15px;
+    }
+
+        .sidebar a.active {
+            font-weight: bold;
+            opacity: 0.9;
+        }
+
+/* ====== MAIN CONTENT ====== */
+.main-content {
+    flex: 1;
+    background-color: #f4f6f9;
+    overflow-y: auto;
+}
+
+/* ====== TOP BAR ====== */
+.top-bar {
+    height: 60px;
+    background: #ffffff;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+}
+
+    /* Search box */
+    .top-bar input {
+        width: 240px;
+        padding: 8px 12px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+    }
+
+    /* Button */
+    .top-bar button {
+        background: #0b4da2;
+        color: #fff;
+        border: none;
+        padding: 8px 14px;
+        border-radius: 6px;
+        cursor: pointer;
+    }
