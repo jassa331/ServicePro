@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import "../../assets/css/contact.css";
+import { NavMenu } from '../../components/layout/NavMenu';
 
 /*
   Contact page for products
@@ -71,141 +73,101 @@ export default function ProductContact() {
     }
   }
 
-  return (
-    <main style={styles.container}>
-      <h1 style={styles.h1}>Contact about a product</h1>
+    return (
+         <>
+            <NavMenu />
+      <main className="contact-container">
 
-      <form onSubmit={handleSubmit} style={styles.form} aria-labelledby="contact-heading">
-        <label style={styles.label}>
-          Name
-          <input
-            name="name"
-            value={form.name}
-            onChange={handleChange}
-            style={styles.input}
-            disabled={submitting}
-            required
-          />
+          <form onSubmit={handleSubmit} className="contact-form">
+
+              <label>
+                  Name
+                  <input
+                      name="name"
+                      value={form.name}
+                      onChange={handleChange}
+                      className="contact-input"
+                      disabled={submitting}
+                      required
+                  />
               </label>
-              <label style={styles.label}>
+
+              <label>
                   Phone No
                   <input
                       name="phoneNumber"
                       value={form.phoneNumber}
                       onChange={handleChange}
-                      style={styles.input}
+                      className="contact-input"
                       disabled={submitting}
                       required
                   />
-
               </label>
 
-        <label style={styles.label}>
-          Email
-          <input
-            name="email"
-            type="email"
-            value={form.email}
-            onChange={handleChange}
-            style={styles.input}
-            disabled={submitting}
-            required
-          />
+              <label>
+                  Email
+                  <input
+                      name="email"
+                      type="email"
+                      value={form.email}
+                      onChange={handleChange}
+                      className="contact-input"
+                      disabled={submitting}
+                      required
+                  />
               </label>
 
+              <label>
+                  Product
+                  <select
+                      name="product"
+                      value={form.product}
+                      onChange={handleChange}
+                      className="contact-input"
+                      disabled={submitting}
+                      required
+                  >
+                      <option value="">Select a product</option>
+                      <option value="servicepro-core">ServicePro Core</option>
+                      <option value="servicepro-analytics">ServicePro Analytics</option>
+                      <option value="servicepro-mobile">ServicePro Mobile</option>
+                  </select>
+              </label>
 
-        <label style={styles.label}>
-          Product
-          <select
-            name="product"
-            value={form.product}
-            onChange={handleChange}
-            style={styles.input}
-            disabled={submitting}
-            required
-          >
-            <option value="">Select a product</option>
-            <option value="servicepro-core">ServicePro Core</option>
-            <option value="servicepro-analytics">ServicePro Analytics</option>
-            <option value="servicepro-mobile">ServicePro Mobile</option>
-          </select>
-        </label>
+              <label>
+                  Message
+                  <textarea
+                      name="message"
+                      value={form.message}
+                      onChange={handleChange}
+                      className="contact-input"
+                      style={{ minHeight: 120 }}
+                      disabled={submitting}
+                      required
+                  />
+              </label>
 
-        <label style={styles.label}>
-          Message
-          <textarea
-            name="message"
-            value={form.message}
-            onChange={handleChange}
-            style={{ ...styles.input, minHeight: 120 }}
-            disabled={submitting}
-            required
-          />
-        </label>
+              <button
+                  type="submit"
+                  disabled={submitting}
+                  className="contact-button"
+              >
+                  {submitting ? "Sending..." : "Send message"}
+              </button>
 
-        <div style={styles.actions}>
-          <button type="submit" disabled={submitting} style={styles.button}>
-            {submitting ? "Sending..." : "Send message"}
-          </button>
-        </div>
+              {status === "success" && (
+                  <p className="contact-success">
+                      Your message has been sent. We'll be in touch.
+                  </p>
+              )}
 
-        {status === "success" && <p style={styles.success}>Your message has been sent. We'll be in touch.</p>}
-        {status === "error" && <p role="alert" style={styles.error}>{errorMessage}</p>}
-      </form>
-    </main>
+              {status === "error" && (
+                  <p className="contact-error">{errorMessage}</p>
+              )}
+
+          </form>
+            </main>
+      </>
   );
 }
 
-const styles = {
-  container: {
-    maxWidth: 760,
-    margin: "40px auto",
-    padding: "0 16px",
-    fontFamily: "Segoe UI, Roboto, Helvetica, Arial, sans-serif",
-  },
-  h1: {
-    fontSize: 28,
-    marginBottom: 20,
-  },
-  form: {
-    display: "grid",
-    gap: 12,
-    background: "#fff",
-    padding: 20,
-    borderRadius: 6,
-    boxShadow: "0 1px 3px rgba(0,0,0,0.08)",
-  },
-  label: {
-    display: "flex",
-    flexDirection: "column",
-    fontSize: 14,
-    color: "#222",
-  },
-  input: {
-    marginTop: 6,
-    padding: "8px 10px",
-    borderRadius: 4,
-    border: "1px solid #cfcfcf",
-    fontSize: 14,
-    outline: "none",
-  },
-  actions: {
-    marginTop: 6,
-  },
-  button: {
-    background: "#0078d4",
-    color: "#fff",
-    padding: "10px 16px",
-    border: "none",
-    borderRadius: 4,
-    cursor: "pointer",
-  },
-  success: {
-    color: "#107c10",
-    marginTop: 8,
-  },
-  error: {
-    color: "#a4262c",
-    marginTop: 8,
-  },
-};
