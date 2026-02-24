@@ -21,16 +21,18 @@ export const ProductPage: React.FC = () => {
     ];
     const navigate = useNavigate();
 
-    const relatedPosts = [
-        "Specification of Tata TMT Bars",
-        "Advantages of Tata TMT Bars",
-        "How to Store TMT Bars Properly",
-        "Tempcore vs Micro-Alloying Technology",
-    ];
+    //const relatedPosts = [
+    //    "Specification of Tata TMT Bars",
+    //    "Advantages of Tata TMT Bars",
+    //    "How to Store TMT Bars Properly",
+    //    "Tempcore vs Micro-Alloying Technology",
+    //];
 
     return (
         <>
             <NavMenu />
+            <main className="main-content">
+
             <CategoryNavbar categories={categories} />
 
             {/* ===== Hero Banner ===== */}
@@ -57,36 +59,36 @@ export const ProductPage: React.FC = () => {
 
                     {/* Product Details */}
                     <div className="product-details">
-                        <h2>Tata Tiscon TMT Bar</h2>
-                        <p className="price">Rs 813 / Piece <span className="price-request">Price on Request</span></p>
+                       {/* <h2>Tata Tiscon TMT Bar</h2>*/}
+                        {/*<p className="price">Rs 813 / Piece <span className="price-request">Price on Request</span></p>*/}
 
-                        <table className="product-specs">
-                            <tbody>
-                                <tr><td>Material</td><td>Mild Steel</td></tr>
-                                <tr><td>Thickness/Diameter</td><td>1-2 inch, 2-3 inch</td></tr>
-                                <tr><td>Application</td><td>Construction</td></tr>
-                                <tr><td>Single Piece Length</td><td>12 Meter</td></tr>
-                                <tr><td>Country of Origin</td><td>Made in India</td></tr>
-                                <tr><td>Brand</td><td>TATA</td></tr>
-                            </tbody>
-                        </table>
+                        {/*<table className="product-specs">*/}
+                        {/*    <tbody>*/}
+                        {/*        <tr><td>Material</td><td>Mild Steel</td></tr>*/}
+                        {/*        <tr><td>Thickness/Diameter</td><td>1-2 inch, 2-3 inch</td></tr>*/}
+                        {/*        <tr><td>Application</td><td>Construction</td></tr>*/}
+                        {/*        <tr><td>Single Piece Length</td><td>12 Meter</td></tr>*/}
+                        {/*        <tr><td>Country of Origin</td><td>Made in India</td></tr>*/}
+                        {/*        <tr><td>Brand</td><td>TATA</td></tr>*/}
+                        {/*    </tbody>*/}
+                        {/*</table>*/}
 
-                        <div className="product-actions">
-                            <button className="btn btn-primary">Request a Call Back</button>
-                            <button className="btn btn-secondary">Yes! I am Interested</button>
-                        </div>
+                        {/*<div className="product-actions">*/}
+                        {/*    <button className="btn btn-primary">Request a Call Back</button>*/}
+                        {/*    <button className="btn btn-secondary">Yes! I am Interested</button>*/}
+                        {/*</div>*/}
                     </div>
                 </div>
 
                 {/* Related / Info Section */}
-                <aside className="related-posts">
-                    <h3>Recent Posts & Info</h3>
-                    <ul>
-                        {relatedPosts.map((post, index) => (
-                            <li key={index}>{post}</li>
-                        ))}
-                    </ul>
-                </aside>
+                {/*<aside className="related-posts">*/}
+                {/*    <h3>Recent Posts & Info</h3>*/}
+                {/*    <ul>*/}
+                {/*        {relatedPosts.map((post, index) => (*/}
+                {/*            <li key={index}>{post}</li>*/}
+                {/*        ))}*/}
+                {/*    </ul>*/}
+                {/*</aside>*/}
             </main>
             <section className="company-info">
                 <div className="company-info-text">
@@ -133,7 +135,8 @@ export const ProductPage: React.FC = () => {
                     <p>Get in touch with us for best deals</p>
                     <button className="btn btn-primary">Contact Us</button>
                 </div>
-            </section>
+                </section>
+            </main>
         </>
     );
 };

@@ -5,7 +5,15 @@
     padding: 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
+body {
+    padding-top: 100px;
+}
+.product-hero {
+    margin-top: 100px;
+}
+.main-content {
+    margin-top: 0px; /* Adjust according to navbar height */
+}
 /* ===== Breadcrumb ===== */
 .breadcrumb {
     font-size: 14px;

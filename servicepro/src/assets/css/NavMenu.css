@@ -1,18 +1,26 @@
-/* ===== NAVBAR MAIN ===== */
+﻿/* ===== NAVBAR MAIN (LIKE IMAGE) ===== */
 .navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 18px 60px;
-    background: white;
-    color: #fff;
-    position: sticky;
+    padding: 20px 80px;
+    background: rgba(20, 23, 32, 0.95);
+    backdrop-filter: blur(10px);
+    color: white;
+    position: relative; /* ✅ change */
     top: 0;
+    left: 0;
+    width: 100%;
     z-index: 1000;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
 }
-
+/* Wrap whole top section */
+.header-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
 .logo {
     display: flex;
     flex-direction: column;
@@ -29,15 +37,13 @@
 .logo-main {
     font-size: 26px;
     font-weight: 800;
-    color: #111827;
-    white-space: nowrap; /* prevent break */
+    color: white; /* Change from black */
 }
 
 .logo-sub {
     font-size: 14px;
-    font-weight: 600;
-    color: #374151;
-    white-space: nowrap;
+    font-weight: 500;
+    color: #d1d5db;
 }
 
 .logo-bottom {
@@ -48,24 +54,19 @@
 }
 
 /* Location Style */
-.location {
-    white-space: nowrap; /* prevent line break */
-    color: #6b7280;
-    font-weight: 500;
-}
-
-/* GST Style Highlight */
+.location,
 .gst {
-    white-space: nowrap; /* prevent GST breaking */
-    font-weight: 700;
-    color: #111827;
+    color: #d1d5db;
 }
-
-.gst {
-    font-weight: 600;
-    color: #111827;
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: white;
+    position: absolute; /* ✅ Important */
+    right: 20px; /* ✅ Move to right */
+    top: 20px; /* ✅ Move to top */
 }
-
 
 
 /* ===== MENU ===== */
@@ -81,17 +82,14 @@
     /* ===== MENU LINKS ===== */
     .menu li a {
         text-decoration: none;
-        color: #1a1b1c;
+        color: white;
         font-size: 15px;
-        font-weight: 500;
-        position: relative;
-        padding: 5px 0;
-        transition: all 0.3s ease;
+        font-weight: 600;
+        transition: 0.3s;
     }
 
-        /* Hover Glow Effect */
         .menu li a:hover {
-            color: #121111;
+            color: #f97316; /* Orange hover */
         }
 
         /* Animated underline */
@@ -112,21 +110,19 @@
 
 /* ===== CALL BUTTON ===== */
 .contact-btn a {
-    background: BLACK;
+    background: #f97316; /* Orange */
     color: white;
-    padding: 11px 22px;
-    border-radius: 30px;
+    padding: 10px 20px;
+    border-radius: 6px;
     font-size: 14px;
     font-weight: 600;
     text-decoration: none;
-    letter-spacing: 0.5px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 14px rgba(249,115,22,0.4);
+    transition: 0.3s;
 }
 
     .contact-btn a:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 6px 20px rgba(249,115,22,0.6);
+        background: #ea580c;
+        transform: scale(1.05);
     }
 
 /* ===== RESPONSIVE DESIGN ===== */
@@ -140,7 +136,25 @@
         gap: 20px;
     }
 }
+@media (max-width: 768px) {
 
+    .menu-toggle {
+        display: block;
+    }
+
+    .menu {
+        display: none; /* Hide menu by default */
+        flex-direction: column;
+        width: 100%;
+        background: rgba(20,23,32,0.98);
+        padding: 15px;
+        border-radius: 10px;
+    }
+
+        .menu.active {
+            display: flex; /* Show when active */
+        }
+}
 @media (max-width: 768px) {
 
     .navbar {

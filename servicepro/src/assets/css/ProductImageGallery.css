@@ -10,8 +10,8 @@
 }
 
 .gallery-item {
-    min-width: 250px;
-    flex: 0 0 auto;
+    min-width: 100%;
+    flex: 0 0 100%;
     position: relative;
     border-radius: 8px;
     overflow: hidden;
@@ -32,4 +32,10 @@
     padding: 8px 10px;
     font-size: 14px;
     text-align: center;
+}
+@media (min-width: 768px) {
+    .gallery-item {
+        min-width: 250px;
+        flex: 0 0 auto;
+    }
 }

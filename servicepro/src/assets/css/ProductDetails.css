@@ -17,10 +17,10 @@ body {
 /* ============================= */
 .details-container {
     max-width: 1400px;
-    margin: 40px auto;
+    margin: 20px auto;
     padding: 30px;
     display: flex;
-    gap: 60px;
+    gap: 40px;
     background: #ffffff;
     border-radius: 12px;
     box-shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
@@ -64,8 +64,10 @@ body {
 
 /* Main Image */
 .main-image-box {
-    width: 500px;
-    height: 500px;
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    aspect-ratio: 1 / 1;
     border-radius: 12px;
     overflow: hidden;
     background: #f8f8f8;
@@ -272,5 +274,18 @@ body {
 
     .price {
         font-size: 24px;
+    }
+}
+@media (max-width: 768px) {
+
+    .thumbnail-column {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .thumb {
+        width: 60px;
+        height: 60px;
     }
 }

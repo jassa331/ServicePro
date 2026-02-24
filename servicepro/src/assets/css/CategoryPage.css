@@ -12,7 +12,8 @@
     box-shadow: 0 5px 20px rgba(0,0,0,0.05);
     padding: 15px;
     gap: 15px;
-    min-width: 500px;
+    width: 100%;
+    max-width: 100%;
 }
 
 /* LEFT THUMBNAILS */
@@ -41,8 +42,9 @@
 }
 
 .main-image {
-    width: 250px;
-    height: 250px;
+    width: 100%;
+    max-width: 300px;
+    height: auto;
     object-fit: cover;
 }
 
@@ -51,10 +53,13 @@
     .amazon-card {
         flex-direction: column;
         align-items: center;
+        text-align: center;
     }
 
     .thumbnail-container {
         flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 }
 
