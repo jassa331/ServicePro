@@ -133,8 +133,13 @@ export const ProductPage: React.FC = () => {
 
                 <div className="contact-us">
                     <p>Get in touch with us for best deals</p>
-                    <button className="btn btn-primary">Contact Us</button>
-                </div>
+                        <button
+                            className="btn btn-primary"
+                            onClick={() => navigate("/contact")}
+                        >
+                            Contact Us
+                        </button>                    </div>
+                  
                 </section>
             </main>
         </>
