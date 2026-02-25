@@ -14,7 +14,31 @@ const ContactList: React.FC = () => {
     const [contacts, setContacts] = useState<Contact[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
+    const downloadPdf = async () => {
+        try {
+            const response = await fetch(
+                "https://systemapi.runasp.net/api/contact/download-pdf"
+            );
 
+            if (!response.ok) {
+                throw new Error("Failed to download PDF");
+            }
+
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "ContactRecords.pdf";
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+
+            window.URL.revokeObjectURL(url);
+        } catch (error) {
+            alert("Error downloading PDF");
+        }
+    };
     useEffect(() => {
         fetchContacts();
     }, []);
@@ -36,8 +60,13 @@ const ContactList: React.FC = () => {
     return (
         <div className="contact-container">
             <div className="contact-card">
-                <h2 className="contact-title">Customer Contact Notification</h2>
+                <div className="header-row">
+                    <h2 className="contact-title">Customer Contact Notification</h2>
 
+                    <button className="download-btn" onClick={downloadPdf}>
+                        Download PDF
+                    </button>
+                </div>
                 {loading && <p className="loading">Loading contacts...</p>}
                 {error && <p className="error">{error}</p>}
 

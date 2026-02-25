@@ -22,7 +22,7 @@ export default function AppRoutes() {
             <BrowserRouter>
                 <Routes>
                     {/* Default redirect */}
-                    <Route path="/" element={<Navigate to="/login" replace />} />
+                    <Route path="/" element={<Navigate to="/products" replace />} />
 
                     {/* Login page */}
                     <Route path="/login" element={<LoginPage />} />

@@ -44,7 +44,7 @@
         color: black;
     }
 
-.menu {
+.menuu {
     display: flex;
     list-style: none;
     gap: 40px;
@@ -53,7 +53,7 @@
 }
 
     /* ===== MENU LINKS ===== */
-    .menu li a {
+    .menuu li a {
         text-decoration: none;
         color: #1a1b1c;
         font-size: 15px;
@@ -64,12 +64,12 @@
     }
 
         /* Hover Glow Effect */
-        .menu li a:hover {
+        .menuu li a:hover {
             color: #121111;
         }
 
         /* Animated underline */
-        .menu li a::after {
+        .menuu li a::after {
             content: "";
             position: absolute;
             left: 0;
@@ -80,7 +80,7 @@
             transition: width 0.3s ease;
         }
 
-        .menu li a:hover::after {
+        .menuu li a:hover::after {
             width: 100%;
         }
 

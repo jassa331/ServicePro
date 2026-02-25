@@ -100,7 +100,7 @@ export const Dashboard: React.FC = () => {
             <div className="dashboard-navbar">
                 <h1>Dashboard</h1>
 
-                <ul className="menu">
+                <ul className="menuu">
                     <li><Link to="/products">User-Portal</Link></li>
                     <li><Link to="/admin/product-create">Add-Product</Link></li>
                     <li><Link to="/product-listing">Manage-Products</Link></li>
