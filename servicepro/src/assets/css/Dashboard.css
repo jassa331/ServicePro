@@ -143,7 +143,28 @@
 }
 
 
+/* Charts Row Layout */
+.charts-row {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+}
 
+/* Each Chart Box */
+.chart-box {
+    flex: 1;
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .charts-row {
+        flex-direction: column;
+    }
+}
 .product-card {
     background: #f9fafb;
     padding: 20px;
