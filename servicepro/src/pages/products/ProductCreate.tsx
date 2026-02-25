@@ -145,7 +145,11 @@ const ProductCreate: React.FC = () => {
                                     <option value="cemment">Cemment</option>
                                     <option value="TMT Bar">TMT Bar</option>
                                     <option value="Binding Wire">Binding Wire</option>
-                                    <option value="Steel Angle">steel-angle</option>
+                                    <option value="Steel Angle">Steel Angle</option>
+                                    <option value="Roofing Sheet">Roofing Sheet</option>
+
+                                    <option value="MS Pipe">MS Pipe</option>
+
                             </select>
                         </div>
                         </div>

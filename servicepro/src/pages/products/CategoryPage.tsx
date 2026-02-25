@@ -27,7 +27,7 @@ export const CategoryPage: React.FC = () => {
         "tmt-bars": "TMT Bar",
         "binding-wire": "Binding Wire",
         "roofing-sheet": "Roofing Sheet",
-        "ms-pipe": "cemment",
+        "ms-pipe": "MS Pipe",
         "steel-angle": "Steel Angle",
     };
 
