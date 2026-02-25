@@ -29,7 +29,7 @@ const ListingProduct: React.FC = () => {
     useEffect(() => {
         const token = localStorage.getItem("token");
         if (!token) {
-            navigate("/");
+            navigate("/login");
         }
     }, [navigate]);
     const fetchContacts = async () => {
@@ -54,7 +54,7 @@ const ListingProduct: React.FC = () => {
                 const token = localStorage.getItem("token");
 
                 if (!token) {
-                    navigate("/");
+                    navigate("/login");
                     return;
                 }
                 const handleBellClick = () => {
@@ -89,7 +89,7 @@ const ListingProduct: React.FC = () => {
 
     const handleLogout = () => {
         localStorage.removeItem("token");
-        navigate("/");
+        navigate("/login");
     };
 
     return (

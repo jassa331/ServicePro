@@ -17,7 +17,7 @@ const ProductCreate: React.FC = () => {
         const token = localStorage.getItem("token");
 
         if (!token) {
-            navigate("/");
+            navigate("/login");
         }
     }, [navigate]);
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {

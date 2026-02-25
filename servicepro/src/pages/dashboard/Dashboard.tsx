@@ -33,7 +33,7 @@ export const Dashboard: React.FC = () => {
         const token = localStorage.getItem("token");
 
         if (!token) {
-            navigate("/");
+            navigate("/login");
         }
     }, [navigate]);
 
@@ -63,7 +63,7 @@ export const Dashboard: React.FC = () => {
     };
     const handleLogout = () => {
         localStorage.removeItem("token");
-        navigate("/");
+        navigate("/login");
     };
     // ✅ Check Contacts Every 5 Seconds
     useEffect(() => {
