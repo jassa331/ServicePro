@@ -1,4 +1,4 @@
-.dashboard-container {
+﻿.dashboard-container {
     padding: 40px;
     background: #f4f6fb;
     min-height: 100vh;
@@ -190,20 +190,62 @@
     padding: 100px;
     font-size: 20px;
 }
-@media (max-width: 1024px) {
-    .products-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
+/* ============================= */
+/* 🔥 MOBILE RESPONSIVE FIXES */
+/* ============================= */
 
 @media (max-width: 768px) {
+
+    /* Reduce page padding */
+    .dashboard-container {
+        padding: 20px;
+    }
+
+    /* Stack cards vertically */
+    .dashboard-cards {
+        flex-direction: column;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    /* Stack navbar items */
+    .dashboard-navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    /* Hide menu gap overflow */
+    .menuu {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    /* Charts stack vertically */
+    .charts-row {
+        flex-direction: column;
+    }
+
+    /* Products grid better on mobile */
     .products-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
     }
 }
-
 @media (max-width: 480px) {
+
     .products-grid {
         grid-template-columns: repeat(1, 1fr);
+    }
+
+    .card p {
+        font-size: 22px;
+    }
+
+    .dashboard-navbar h1 {
+        font-size: 20px;
     }
 }
