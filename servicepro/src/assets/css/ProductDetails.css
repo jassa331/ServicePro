@@ -1,4 +1,4 @@
-/* ============================= */
+﻿/* ============================= */
 /* GLOBAL RESET */
 /* ============================= */
 * {
@@ -11,7 +11,30 @@
 body {
     background-color: #f6f7f9;
 }
+/* ✅ Common Button Style */
+.contactdetals-btn {
+    background: rgba(20, 23, 32, 0.95); /* Orange */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 10px;
+}
 
+    /* ✅ Hover Effect */
+    .contactdetals-btn:hover {
+        background: rgba(20, 23, 32, 0.95);
+        transform: scale(1.05);
+    }
+
+    /* ✅ Remove Focus Outline */
+    .contactdetals-btn:focus {
+        outline: none;
+    }
 /* ============================= */
 /* MAIN CONTAINER */
 /* ============================= */

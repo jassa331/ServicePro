@@ -1,4 +1,4 @@
-/* ================================================= */
+﻿/* ================================================= */
 /* PREMIUM DARK CONTACT PAGE */
 /* ================================================= */
 
@@ -51,8 +51,8 @@
     padding: 14px 16px;
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    background: rgba(255, 255, 255, 0.08);
-    color: #ffffff;
+    background: black;
+    color: #ffff;
     font-size: 15px;
     outline: none;
     transition: all 0.3s ease;

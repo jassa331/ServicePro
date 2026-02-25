@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import "../../assets/css/ProductDetails.css";
 import { NavMenu } from '../../components/layout/NavMenu';
-
+import { useNavigate } from "react-router-dom";
 interface Product {
     id: string;
     name: string;
@@ -18,6 +18,7 @@ const ProductDetails: React.FC = () => {
     const [product, setProduct] = useState<Product | null>(null);
     const [loading, setLoading] = useState(true);
     const [selectedImage, setSelectedImage] = useState<string>("");
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (!id) return;
@@ -89,7 +90,14 @@ const ProductDetails: React.FC = () => {
                             <td>{product.id}</td>
                         </tr>
                     </tbody>
-                </table>
+                    </table>
+                    <button className="contactdetals-btn" onClick={() => navigate("/contact")}>
+                        Contact Us
+                    </button>
+
+                    <button className="contactdetals-btn" onClick={() => navigate("/profile")}>
+                        View Profile
+                    </button>
             </div>
 
             </div>
