@@ -1,80 +1,97 @@
-/* Background */
+/* ================================================= */
+/* PREMIUM ADMIN CONTACT LIST PAGE */
+/* ================================================= */
+
+body {
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+}
+
+/* ===== Main Container ===== */
 .contact-container {
-    min-height: 100vh;
-    padding: 50px;
-    background: linear-gradient(135deg, #f0f4ff, #f9fafc);
-    display: flex;
-    justify-content: center;
+    max-width: 1300px;
+    margin: 80px auto;
+    padding: 20px;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
 }
 
-/* Card */
+/* ===== Card ===== */
 .contact-card {
-    width: 100%;
-    max-width: 1200px;
-    background: #ffffff;
-    padding: 30px;
+    background: white;
+    backdrop-filter: blur(18px);
     border-radius: 16px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-    animation: fadeIn 0.4s ease-in-out;
+    padding: 35px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #ffffff;
 }
 
-/* Title */
+/* ===== Title ===== */
 .contact-title {
-    margin-bottom: 25px;
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 600;
-    color: #1e293b;
+    margin-bottom: 30px;
+    color: black;
+    text-align: center;
+    letter-spacing: 0.5px;
 }
 
-/* Table wrapper for scroll */
+/* ===== Table Wrapper ===== */
 .table-wrapper {
     overflow-x: auto;
+    border-radius: 12px;
 }
 
-/* Table */
+/* ===== Table ===== */
 .contact-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 14px;
+    min-width: 900px;
 }
 
+    /* ===== Table Head ===== */
     .contact-table thead {
-        background-color: #f1f5f9;
+        background: #f97316;
     }
 
     .contact-table th {
+        padding: 15px;
         text-align: left;
-        padding: 14px;
-        font-weight: 600;
-        color: #334155;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        color: #fff;
     }
 
+    /* ===== Table Body ===== */
     .contact-table td {
-        padding: 14px;
-        border-top: 1px solid #e2e8f0;
-        color: #475569;
+        padding: 14px 15px;
+        font-size: 14px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        color: black;
     }
 
+    /* Row Hover Effect */
     .contact-table tbody tr {
-        transition: all 0.2s ease;
+        transition: all 0.3s ease;
     }
 
         .contact-table tbody tr:hover {
-            background-color: #f8fafc;
+            background: rgba(255, 255, 255, 0.05);
             transform: scale(1.01);
         }
 
-/* Product Badge */
+/* ===== Product Badge ===== */
 .product-badge {
-    background: #e0f2fe;
-    color: #0369a1;
-    padding: 4px 10px;
-    border-radius: 20px;
+    background: black;
+    padding: 6px 12px;
+    border-radius: 30px;
     font-size: 12px;
     font-weight: 500;
+    color: white;
+    display: inline-block;
 }
 
-/* Message column */
+/* ===== Message Cell ===== */
 .message-cell {
     max-width: 250px;
     white-space: nowrap;
@@ -82,29 +99,52 @@
     text-overflow: ellipsis;
 }
 
-/* States */
+/* ===== Loading ===== */
 .loading {
-    color: #2563eb;
+    text-align: center;
+    font-size: 16px;
+    padding: 20px;
+    color: #94a3b8;
 }
 
+/* ===== Error ===== */
 .error {
-    color: #dc2626;
+    text-align: center;
+    font-size: 15px;
+    padding: 20px;
+    color: #ef4444;
     font-weight: 500;
 }
 
+/* ===== No Data ===== */
 .no-data {
-    color: #64748b;
+    text-align: center;
+    font-size: 15px;
+    padding: 20px;
+    color: #cbd5e1;
 }
 
-/* Animation */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
+/* ================================================= */
+/* RESPONSIVE DESIGN */
+/* ================================================= */
+
+@media (max-width: 768px) {
+
+    .contact-card {
+        padding: 20px;
     }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    .contact-title {
+        font-size: 20px;
+    }
+
+    .contact-table th,
+    .contact-table td {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    .message-cell {
+        max-width: 150px;
     }
 }
