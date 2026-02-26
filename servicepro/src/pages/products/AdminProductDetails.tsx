@@ -86,7 +86,7 @@ const AdminProductDetails: React.FC = () => {
             data.append("isactive", formData.isactive.toString());
 
             await axios.put(
-                `https://localhost:7046/api/Product/${id}`,
+                `https://systemapi.runasp.net/api/Product/${id}`,
                 data,
                 {
                     headers: {
