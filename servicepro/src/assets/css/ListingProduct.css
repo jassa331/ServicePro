@@ -76,3 +76,73 @@
     font-size: 13px;
     color: #555;
 }
+.notification {
+    position: relative;
+    display: inline-block;
+}
+
+.bell-icon {
+    font-size: 22px;
+    color: #1e293b;
+    cursor: pointer;
+}
+
+/* Small red dot */
+.notification-dot {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 8px;
+    height: 8px;
+    background-color: #ef4444;
+    border-radius: 50%;
+    border: 2px solid white; /* clean look */
+}
+
+/* Navbar */
+.dashboard-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fffefc;
+    padding: 20px 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
+
+    .dashboard-navbar h1 {
+        margin: 0;
+        font-size: 26px;
+        color: black;
+    }
+
+.menuu {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+    margin: 0;
+    padding: 0;
+}
+
+    /* ===== MENU LINKS ===== */
+    .menuu li a {
+        text-decoration: none;
+        color: #1a1b1c;
+        font-size: 15px;
+        font-weight: 500;
+        position: relative;
+        padding: 5px 0;
+        transition: all 0.3s ease;
+    }
+
+        /* Hover Glow Effect */
+        .menuu li a:hover {
+            color: #121111;
+        }
+
+        /* Animated underline */
+        
+
+        .menuu li a:hover::after {
+            width: 100%;
+        }
