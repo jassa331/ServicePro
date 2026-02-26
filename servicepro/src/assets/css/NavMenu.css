@@ -89,7 +89,7 @@
     }
 
         .menu li a:hover {
-            color: black; /* Orange hover */
+            color: black; 
         }
 
         /* Animated underline */
@@ -146,13 +146,15 @@
         display: none; /* Hide menu by default */
         flex-direction: column;
         width: 100%;
-        background: rgba(20,23,32,0.98);
+        background: white;
         padding: 15px;
         border-radius: 10px;
     }
 
         .menu.active {
-            display: flex; /* Show when active */
+            display: flex;
+            background:white;
+            flex-direction: row;
         }
 }
 @media (max-width: 768px) {
