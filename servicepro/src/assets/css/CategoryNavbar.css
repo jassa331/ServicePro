@@ -3,14 +3,14 @@
     display: flex;
     gap: 40px;
     padding: 15px 60px;
-    background: white;
+    background: #3b3d40;
     border-bottom: 1px solid rgba(0,0,0,0.08);
 }
 
 /* ===== CATEGORY LINKS (Navbar Style) ===== */
 .category-btn {
     text-decoration: none;
-    color: #1a1b1c;
+    color: white;
     font-size: 15px;
     font-weight: 500;
     position: relative;
@@ -20,7 +20,7 @@
 
     /* Hover color */
     .category-btn:hover {
-        color: #000;
+        color: white;
     }
 
     /* Animated underline */

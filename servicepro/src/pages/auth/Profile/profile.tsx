@@ -2,11 +2,19 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../../../assets/css/Profile.css";
 import { NavMenu } from '../../../components/layout/NavMenu';
+import { CategoryNavbar } from "../../../components/layout/CategoryNavbar";
 
 
 
 const Profile: React.FC = () => {
-
+    const categories = [
+        "TMT Bars",
+        "cemment",
+        "Binding Wire",
+        "Roofing Sheet",
+        "MS Pipe",
+        "Steel Angle",
+    ];
     useEffect(() => {
         axios.get("https://systemapi.runasp.net/api/auth/profile")
             .catch(() => {
@@ -16,6 +24,8 @@ const Profile: React.FC = () => {
     return (
         <>
             <NavMenu />
+            <CategoryNavbar categories={categories} />
+
         <div className="profile-wrapper">
             <div className="profile-card company-card">
 

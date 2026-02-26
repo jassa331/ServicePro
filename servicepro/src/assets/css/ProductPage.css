@@ -139,7 +139,7 @@ body {
 }
 
 .btn-primary {
-    background-color: #f97316;
+    background-color: black;
     color: white;
 }
 
@@ -183,7 +183,7 @@ body {
             color: #d32f2f;
         }
 .company-info {
-    background-color: rgba(20, 23, 32, 0.95); /* match your screenshot */
+    background-color: #3b3d40;
     color: white;
     padding: 40px 20px;
     text-align: center;
@@ -212,7 +212,7 @@ body {
 
 .info-card {
     flex: 1 1 200px;
-    background-color: #f97316;
+    background-color: white;
     padding: 20px;
     border-radius: 8px;
     min-width: 200px;
@@ -222,11 +222,13 @@ body {
         font-size: 16px;
         margin-bottom: 10px;
         font-weight: 600;
+        color: black;
     }
 
     .info-card p {
         font-size: 14px;
         margin: 0;
+        color: black;
     }
 
 .contact-us p {

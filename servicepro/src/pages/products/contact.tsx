@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../../assets/css/contact.css";
 import { NavMenu } from '../../components/layout/NavMenu';
+import { CategoryNavbar } from "../../components/layout/CategoryNavbar";
 
 /*
   Contact page for products
@@ -21,7 +22,14 @@ export default function ProductContact() {
   const [submitting, setSubmitting] = useState(false);
   const [status, setStatus] = useState(null); // null | "success" | "error"
   const [errorMessage, setErrorMessage] = useState("");
-
+    const categories = [
+        "TMT Bars",
+        "cemment",
+        "Binding Wire",
+        "Roofing Sheet",
+        "MS Pipe",
+        "Steel Angle",
+    ];
   function handleChange(e) {
     const { name, value } = e.target;
     setForm((s) => ({ ...s, [name]: value }));
@@ -76,6 +84,8 @@ export default function ProductContact() {
     return (
          <>
             <NavMenu />
+            <CategoryNavbar categories={categories} />
+
       <main className="contact-container">
 
           <form onSubmit={handleSubmit} className="contact-form">

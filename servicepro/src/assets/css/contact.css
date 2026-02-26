@@ -1,7 +1,10 @@
 ﻿/* ================================================= */
-/* PREMIUM DARK CONTACT PAGE */
+/* PREMIUM DARK CONTACT PAGE - UPDATED */
 /* ================================================= */
 
+/* Page Background */
+
+/* Main Container */
 .contact-container {
     max-width: 800px;
     margin: 80px auto;
@@ -15,18 +18,17 @@
         font-weight: 700;
         text-align: center;
         margin-bottom: 40px;
-        color: #0f0d0d;
+        color: #ffffff;
         letter-spacing: 1px;
     }
 
 /* ========================= */
-/* FORM BOX - GLASS EFFECT */
+/* FORM BOX */
 /* ========================= */
 .contact-form {
     display: grid;
     gap: 25px;
-    background: #0f0d0d;
-    backdrop-filter: blur(12px);
+    background: #3b3d40; /* UPDATED */
     padding: 40px;
     border-radius: 20px;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
@@ -40,7 +42,6 @@
         font-size: 14px;
         font-weight: 600;
         color: #ffffff;
-        position: relative;
     }
 
 /* ========================= */
@@ -50,9 +51,9 @@
     margin-top: 8px;
     padding: 14px 16px;
     border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background: black;
-    color: #ffff;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: #2f3135; /* UPDATED */
+    color: #ffffff;
     font-size: 15px;
     outline: none;
     transition: all 0.3s ease;
@@ -60,8 +61,8 @@
 
     /* Focus Effect */
     .contact-input:focus {
-        border-color: #00c6ff;
-        box-shadow: 0 0 15px rgba(0, 198, 255, 0.4);
+        border-color: #f97316;
+        box-shadow: 0 0 15px rgba(249, 115, 22, 0.5);
         transform: translateY(-2px);
     }
 
@@ -80,7 +81,7 @@
     font-size: 16px;
     font-weight: 700;
     cursor: pointer;
-    background: #f97316;
+    background: #476694;
     color: #fff;
     transition: all 0.4s ease;
     letter-spacing: 1px;
@@ -88,10 +89,9 @@
 
     .contact-button:hover {
         transform: scale(1.05);
-        box-shadow: 0 10px 25px rgba(0, 198, 255, 0.5);
+        box-shadow: 0 10px 25px rgba(249, 115, 22, 0.5);
     }
 
-    /* Disabled */
     .contact-button:disabled {
         background: #444;
         cursor: not-allowed;
@@ -102,7 +102,7 @@
 /* STATUS MESSAGE */
 /* ========================= */
 .contact-success {
-    color: #f97316;
+    color: white;
     font-weight: 600;
     text-align: center;
     margin-top: 15px;
@@ -116,9 +116,6 @@
 }
 
 /* ========================= */
-/* RESPONSIVE */
-/* ========================= */
-/* ========================= */
 /* RESPONSIVE - MOBILE FIX */
 /* ========================= */
 @media (max-width: 768px) {
@@ -129,7 +126,7 @@
     }
 
         .contact-container h1 {
-            font-size: 20px;
+            font-size: 22px;
             margin-bottom: 20px;
         }
 

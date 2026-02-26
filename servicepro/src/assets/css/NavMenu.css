@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 20px 80px;
-    background: rgba(20, 23, 32, 0.95);
+    background: WHITE;
     backdrop-filter: blur(10px);
     color: white;
     position: relative; /* ✅ change */
@@ -37,13 +37,13 @@
 .logo-main {
     font-size: 26px;
     font-weight: 800;
-    color: white; /* Change from black */
+    color: black; /* Change from black */
 }
 
 .logo-sub {
     font-size: 14px;
     font-weight: 500;
-    color: #d1d5db;
+    color: black;
 }
 
 .logo-bottom {
@@ -56,13 +56,13 @@
 /* Location Style */
 .location,
 .gst {
-    color: #d1d5db;
+    color: black;
 }
 .menu-toggle {
     display: none;
     font-size: 28px;
     cursor: pointer;
-    color: white;
+    color: black;
     position: absolute; /* ✅ Important */
     right: 20px; /* ✅ Move to right */
     top: 20px; /* ✅ Move to top */
@@ -82,14 +82,14 @@
     /* ===== MENU LINKS ===== */
     .menu li a {
         text-decoration: none;
-        color: white;
+        color: black;
         font-size: 15px;
         font-weight: 600;
         transition: 0.3s;
     }
 
         .menu li a:hover {
-            color: #f97316; /* Orange hover */
+            color: black; /* Orange hover */
         }
 
         /* Animated underline */
@@ -110,7 +110,7 @@
 
 /* ===== CALL BUTTON ===== */
 .contact-btn a {
-    background: #f97316; /* Orange */
+    background: black; /* Orange */
     color: white;
     padding: 10px 20px;
     border-radius: 6px;
@@ -121,7 +121,7 @@
 }
 
     .contact-btn a:hover {
-        background: #ea580c;
+        background: #275187;
         transform: scale(1.05);
     }
 
