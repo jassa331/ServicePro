@@ -1,11 +1,28 @@
-import React from 'react';
+﻿import React from 'react';
 import { NavMenu } from '../../components/layout/NavMenu';
 import { ProductImageGallery } from '../../components/common/ProductImageGallery';
 import "../../assets/css/ProductPage.css";
 import { CategoryNavbar } from "../../components/layout/CategoryNavbar";
 import { useNavigate } from "react-router-dom";
-
+import { useEffect, useState } from "react";
+import axios from "axios";
 export const ProductPage: React.FC = () => {
+    interface Product {
+        id: string;
+        name: string;
+        price: number;
+        category: string;
+        description?: string;
+        imageUrls: string[];
+    }
+    const [products, setProducts] = useState<Product[]>([]);
+    useEffect(() => {
+        axios.get<Product[]>("https://systemapi.runasp.net/api/Product")
+            .then(res => {
+                setProducts(res.data);
+            })
+            .catch(err => console.error(err));
+    }, []);
     const productImages = [
         { src: "/tmt1.png", caption: "SR TMT Bars Supplier In Agra" },
         { src: "/myimage.png", caption: "TMT Steel Bars" },
@@ -35,16 +52,7 @@ export const ProductPage: React.FC = () => {
 
             <CategoryNavbar categories={categories} />
 
-            {/* ===== Hero Banner ===== */}
-            <section className="product-hero">
-                <div className="hero-content">
-                    <h1>Building Strength. Delivering Trust</h1>
-                    <p>Welcome to S.R ENTERPRISE, your reliable partner for premium quality Cement, Iron & Steel products. We specialize in supplying top-grade construction materials that ensure strength, durability, and long-lasting performance for every project � from residential homes to large infrastructure developments.</p>
-                </div>
-                <div className="hero-image">
-                    <img src="/ij.jpg" alt="Tata Tiscon TMT Bars" />
-                </div>
-            </section>
+           
 
             {/* ===== Main Content ===== */}
             <main className="container">
@@ -55,7 +63,6 @@ export const ProductPage: React.FC = () => {
 
                 <div className="product-page">
                     {/* Product Gallery */}
-                    <ProductImageGallery images={productImages} />
 
                     {/* Product Details */}
                     <div className="product-details">
@@ -89,7 +96,34 @@ export const ProductPage: React.FC = () => {
                 {/*        ))}*/}
                 {/*    </ul>*/}
                 {/*</aside>*/}
-            </main>
+                </main>
+                {/* ===== All Products Section ===== */}
+                <section className="all-products-section container">
+                    <h2 style={{ marginBottom: "20px" }}>Our Products</h2>
+
+                    <div className="products-gridd">
+                        {products.map(product => (
+                            <div
+                                key={product.id}
+                                className="amazon-cardd"
+                                onClick={() => navigate(`/category/${product.category.toLowerCase().replace(/\s+/g, "-")}`)}
+                                style={{ cursor: "pointer" }}
+                            >
+                                <img
+                                    src={product.imageUrls?.[0]}
+                                    alt={product.name}
+                                    className="main-image"
+                                />
+
+                                <div className="product-info">
+                                    <h3>{product.name}</h3>
+                                    <p className="category">{product.category}</p>
+                                    <p className="price">₹ {product.price}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </section>
             <section className="company-info">
                 <div className="company-info-text">
                     <p>
