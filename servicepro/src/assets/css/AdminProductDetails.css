@@ -1,0 +1,253 @@
+.admin-details-container {
+    display: flex;
+    gap: 40px;
+    padding: 40px;
+}
+
+.admin-left {
+    display: flex;
+    gap: 20px;
+}
+
+.thumbnail-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.thumb {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border: 2px solid #ccc;
+    cursor: pointer;
+}
+
+    .thumb.active {
+        border: 2px solid #ff9900;
+    }
+
+.main-image-box img {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+}
+
+.admin-right {
+    flex: 1;
+}
+
+.admin-table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+    .admin-table th,
+    .admin-table td {
+        padding: 10px;
+        border: 1px solid #ddd;
+    }
+
+.admin-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.edit-btn {
+    background: #0e284a;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+/* Navbar */
+.dashboard-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fffefc;
+    padding: 20px 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
+
+    .dashboard-navbar h1 {
+        margin: 0;
+        font-size: 26px;
+        color: black;
+    }
+
+.menuu {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+    margin: 0;
+    padding: 0;
+}
+
+    /* ===== MENU LINKS ===== */
+    .menuu li a {
+        text-decoration: none;
+        color: #1a1b1c;
+        font-size: 15px;
+        font-weight: 500;
+        position: relative;
+        padding: 5px 0;
+        transition: all 0.3s ease;
+    }
+
+        /* Hover Glow Effect */
+        .menuu li a:hover {
+            color: #121111;
+        }
+
+        /* Animated underline */
+        .menuu li a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0%;
+            height: 2px;
+            background: black;
+            transition: width 0.3s ease;
+        }
+
+        .menuu li a:hover::after {
+            width: 100%;
+        }
+.delete-btn {
+    background: #631a1a;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+/* ================= EDIT FORM ================= */
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+    .edit-form input,
+    .edit-form textarea {
+        padding: 10px 12px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 14px;
+        width: 100%;
+        transition: 0.2s ease;
+    }
+
+        .edit-form input:focus,
+        .edit-form textarea:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0,123,255,0.3);
+        }
+
+    .edit-form textarea {
+        min-height: 120px;
+        resize: vertical;
+    }
+
+/* ================= SAVE BUTTON ================= */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+    .form-group label {
+        font-weight: 600;
+        font-size: 14px;
+        color: #333;
+    }
+.save-btn {
+    background: #132910;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: 0.3s ease;
+}
+
+    .save-btn:hover {
+        background: black;
+    }
+
+/* Improve Existing Buttons */
+.edit-btn,
+.delete-btn {
+    border-radius: 6px;
+    transition: 0.3s ease;
+}
+
+    .edit-btn:hover {
+        background: black;
+    }
+
+    .delete-btn:hover {
+        background: black;
+    }
+
+/* ================= TITLE STYLE ================= */
+
+.admin-right h1 {
+    margin-bottom: 10px;
+    font-size: 26px;
+}
+
+.admin-right h2 {
+    margin-top: 10px;
+    font-size: 20px;
+    color: #333;
+}
+.notification {
+    position: relative;
+    cursor: pointer;
+}
+
+.bell-icon {
+    font-size: 22px;
+}
+
+.notification-dot {
+    position: absolute;
+    top: -2px;
+    right: -5px;
+    width: 8px;
+    height: 8px;
+    background: red;
+    border-radius: 50%;
+}
+/* ================= TABLE IMPROVEMENT ================= */
+
+.admin-table th {
+    background: #f8f9fa;
+    text-align: left;
+    width: 150px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 992px) {
+    .admin-details-container {
+        flex-direction: column;
+    }
+
+    .main-image-box img {
+        width: 100%;
+        height: auto;
+    }
+
+    .thumbnail-column {
+        flex-direction: row;
+    }
+}

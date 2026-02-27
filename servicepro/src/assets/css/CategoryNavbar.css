@@ -1,0 +1,49 @@
+/* ===== CATEGORY NAVBAR ===== */
+.category-navbar {
+    display: flex;
+    gap: 40px;
+    padding: 15px 60px;
+    background: #3b3d40;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+/* ===== CATEGORY LINKS (Navbar Style) ===== */
+.category-btn {
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    position: relative;
+    padding: 5px 0;
+    transition: all 0.3s ease;
+}
+
+    /* Hover color */
+    .category-btn:hover {
+        color: white;
+    }
+
+    /* Animated underline */
+    .category-btn::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -6px;
+        width: 0%;
+        height: 2px;
+        background: black;
+        transition: width 0.3s ease;
+    }
+
+    .category-btn:hover::after {
+        width: 100%;
+    }
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .category-navbar {
+        gap: 20px;
+        padding: 12px 30px;
+        overflow-x: auto;
+    }
+}
