@@ -103,6 +103,8 @@ const ListingProduct: React.FC = () => {
                     <li><Link to="/admin/product-create">Add-Product</Link></li>
                     <li><Link to="/product-listing">Manage-Products</Link></li>
                     <li><Link to="/profile">Profile</Link></li>
+                    <li><Link to="/admin/deleted-listing-product">InActive Products</Link></li>
+
                     <li onClick={handleLogout}>Logout</li>
 
                     <div className="notification" onClick={handleBellClick}>
