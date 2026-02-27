@@ -5,6 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { FaBell } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 interface Product {
     id: string;
@@ -109,24 +110,55 @@ const AdminProductDetails: React.FC = () => {
     };
     // ================= DELETE PRODUCT =================
     const handleDelete = async () => {
-        if (!window.confirm("Are you sure you want to delete this product?")) return;
-
         try {
+
+            const result = await Swal.fire({
+                title: "Are you sure?",
+                text: "This product will be permanently deleted!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#0e284a",
+                cancelButtonColor: "#631a1a",
+                confirmButtonText: "Yes, delete it!",
+                cancelButtonText: "Cancel"
+            });
+
+            if (!result.isConfirmed) return;
+
+            const token = localStorage.getItem("token");
+
+            if (!token) {
+                toast.error("Unauthorized! Please login again.");
+                return;
+            }
+
             await axios.delete(
                 `https://systemapi.runasp.net/api/Product/${id}`,
                 {
                     headers: {
-                        Authorization: `Bearer ${localStorage.getItem("token")}`
+                        Authorization: `Bearer ${token}`
                     }
                 }
             );
 
-            toast.success("Product deleted successfully!");
-            navigate("/admin/products");
+            toast.success("Product deleted successfully 🎉");
+
+            // small delay for better UX
+            setTimeout(() => {
+                navigate("/admin/products");
+            }, 1000);
 
         } catch (error) {
-            console.error(error);
-            toast.error("Delete failed");
+
+            console.error("Delete Error:", error);
+
+            if (error.response?.status === 401) {
+                toast.error("Session expired. Please login again.");
+            } else if (error.response?.status === 403) {
+                toast.error("You are not allowed to delete this product.");
+            } else {
+                toast.error("Delete failed. Try again.");
+            }
         }
     };
 
