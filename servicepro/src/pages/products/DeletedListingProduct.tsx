@@ -127,8 +127,7 @@ const DeletedListingProduct: React.FC = () => {
                                 className="product-card"
                                 key={product.id}
                                 onClick={() =>
-                                    navigate(`/admin/product/${product.id}`)
-                                }
+                                    navigate(`/admin/inactive-product/${product.id}`)                                }
                             >
                                 <div className="image-container">
                                     <img

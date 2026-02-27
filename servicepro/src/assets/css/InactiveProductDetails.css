@@ -1,0 +1,67 @@
+.inactive-details-container {
+    display: flex;
+    gap: 40px;
+    padding: 40px;
+}
+
+.inactive-left {
+    display: flex;
+    gap: 20px;
+}
+
+.inactive-thumbs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.inactive-thumb {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border: 2px solid #ccc;
+    cursor: pointer;
+}
+
+    .inactive-thumb.active {
+        border: 2px solid red;
+    }
+
+.inactive-main-img img {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+}
+
+.inactive-right {
+    flex: 1;
+}
+
+.inactive-table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+    .inactive-table th,
+    .inactive-table td {
+        padding: 10px;
+        border: 1px solid #ddd;
+    }
+
+.inactive-actions {
+    margin-top: 20px;
+}
+
+.restore-btn {
+    background: #132910;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+    .restore-btn:hover {
+        background: black;
+    }

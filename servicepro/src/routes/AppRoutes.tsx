@@ -14,6 +14,7 @@ import ContactList from "../pages/products/ContactList";
 import ProductDetails from "../pages/products/ProductDetails";
 import ProductListing from "../pages/products/ListingProduct";
 import DeletedListingProduct from "../pages/products/DeletedListingProduct";
+import InactiveProductDetails from "../pages/products/InactiveProductDetails";
 
 import AdminProductDetails from "../pages/products/AdminProductDetails";
 
@@ -44,6 +45,14 @@ export default function AppRoutes() {
                         element={
                             <ProtectedRoute>
                                 <ProductCreate />
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route
+                        path="/admin/inactive-product/:id"
+                        element={
+                            <ProtectedRoute>
+                                <InactiveProductDetails />
                             </ProtectedRoute>
                         }
                     />
