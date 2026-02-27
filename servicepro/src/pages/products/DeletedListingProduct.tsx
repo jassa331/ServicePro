@@ -62,7 +62,7 @@ const DeletedListingProduct: React.FC = () => {
                 }
 
                 const res = await axios.get(
-                    "https://localhost:7046/api/Product/Get-inactive-products",
+                    "https://systemapi.runasp.net/api/Product/Get-inactive-products",
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,
