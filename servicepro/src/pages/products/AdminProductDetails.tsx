@@ -114,7 +114,7 @@ const AdminProductDetails: React.FC = () => {
 
             const result = await Swal.fire({
                 title: "Are you sure?",
-                text: "This product will be permanently deleted!",
+                text: "This product will be hidden from users!",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#0e284a",
@@ -133,22 +133,25 @@ const AdminProductDetails: React.FC = () => {
             }
 
             await axios.delete(
-                `https://systemapi.runasp.net/api/Product/${id}`,
+                `https://systemapi.runasp.net/api/Product/deleteproduct/${id}`,
                 {
                     headers: {
-                        Authorization: `Bearer ${token}`
+                        Authorization: `Bearer ${token}`,
+                        "Content-Type": "application/json"
+                    },
+                    data: {
+                        isActive: false   // 👈 THIS IS IMPORTANT
                     }
                 }
             );
 
-            toast.success("Product deleted successfully 🎉");
+            toast.success("Product removed successfully 🎉");
 
-            // small delay for better UX
             setTimeout(() => {
-                navigate("/admin/products");
-            }, 1000);
+                navigate("/product-listing");   
+            }, 800);
 
-        } catch (error) {
+        } catch (error: any) {
 
             console.error("Delete Error:", error);
 
