@@ -138,9 +138,11 @@ export default function ProductContact() {
                       required
                   >
                       <option value="">Select a product</option>
-                      <option value="servicepro-core">ServicePro Core</option>
-                      <option value="servicepro-analytics">ServicePro Analytics</option>
-                      <option value="servicepro-mobile">ServicePro Mobile</option>
+                            <option value="cemment">Cemment</option>
+                            <option value="TMT Bar">TMT Bar</option>
+                            <option value="Binding Wire">Binding Wire</option>
+                            <option value="Steel Angle">Steel Angle</option>
+                            <option value="Roofing Sheet">Roofing Sheet</option>
                   </select>
               </label>
 
