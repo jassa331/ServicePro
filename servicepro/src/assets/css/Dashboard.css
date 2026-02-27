@@ -28,12 +28,13 @@
 }
 
 /* Navbar */
-.dashboard-navbar {
+.dashboard-navbarr {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #fffefc;
+    background: white;
     padding: 20px 30px;
+    min-height: 120px;
     border-radius: 12px;
     margin-bottom: 30px;
 }

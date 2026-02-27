@@ -1,9 +1,10 @@
 ﻿import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import "../../assets/css/product.css";
 import { NavMenu } from '../../components/layout/NavMenu';
-
-
+import { Link, useNavigate } from "react-router-dom";
+import { FaBell } from "react-icons/fa";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const ProductCreate: React.FC = () => {
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
@@ -39,8 +40,9 @@ const ProductCreate: React.FC = () => {
 
         e.target.value = "";
     };
+    const [hasNewNotification, setHasNewNotification] = useState(false);
 
-
+   
     const removeImage = (index: number) => {
         const newImages = [...images];
         const newPreviews = [...previewUrls];
@@ -50,6 +52,10 @@ const ProductCreate: React.FC = () => {
 
         setImages(newImages);
         setPreviewUrls(newPreviews);
+    };
+    const handleBellClick = () => {
+        setHasNewNotification(false);
+        navigate("/contactList");
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -81,14 +87,14 @@ const ProductCreate: React.FC = () => {
             if (!response.ok) {
                 const errorText = await response.text();
                 console.error("API Error:", errorText);
-                alert("Product creation failed!");
+                toast.error("Product creation failed!");
                 return;
             }
 
-            alert("Product Created Successfully!");
+            toast.success("Product Created Successfully!");
         } catch (error) {
             console.error("Network Error:", error);
-            alert("Something went wrong!");
+            toast.error("Something went wrong!");
         }
 
         setLoading(false);
@@ -96,10 +102,36 @@ const ProductCreate: React.FC = () => {
 
 
     return (
-               <>
-            <NavMenu />
+            
 
         <div className="product-container">
+
+            {/* ===== NAVBAR ===== */}
+            <div className="dashboard-navbar">
+                <h1>Create Product</h1>
+
+                <ul className="menu">
+                    <li><Link to="/dashboard">Dashboard</Link></li>
+                    <li><Link to="/products">User-Portal</Link></li>
+                    <li><Link to="/admin/product-create">Add-Product</Link></li>
+                    <li><Link to="/product-listing">Manage-Products</Link></li>
+                    <li><Link to="/profile">Profile</Link></li>
+
+
+
+                    {/* ✅ Notification Properly Inside LI */}
+                    <li className="notification-item" onClick={handleBellClick}>
+                        <FaBell className="bell-icon" />
+                        {hasNewNotification && (
+                            <span className="notification-dot"></span>
+                        )}
+                    </li>
+                </ul>
+            </div>
+
+            <ToastContainer position="top-right" autoClose={3000} />
+
+            {/* ===== PRODUCT CARD ===== */}
             <div className="product-card">
                 <h2>Create New Product</h2>
 
@@ -142,18 +174,15 @@ const ProductCreate: React.FC = () => {
                                 required
                             >
                                 <option value="">Select Category</option>
-                                    <option value="cemment">Cemment</option>
-                                    <option value="TMT Bar">TMT Bar</option>
-                                    <option value="Binding Wire">Binding Wire</option>
-                                    <option value="Steel Angle">Steel Angle</option>
-                                    <option value="Roofing Sheet">Roofing Sheet</option>
-
-                                    <option value="MS Pipe">MS Pipe</option>
-
+                                <option value="cemment">Cemment</option>
+                                <option value="TMT Bar">TMT Bar</option>
+                                <option value="Binding Wire">Binding Wire</option>
+                                <option value="Steel Angle">Steel Angle</option>
+                                <option value="Roofing Sheet">Roofing Sheet</option>
+                                <option value="MS Pipe">MS Pipe</option>
                             </select>
                         </div>
-                        </div>
-   
+                    </div>
 
                     <div className="form-group">
                         <label>Upload Images (Max 4)</label>
@@ -184,9 +213,9 @@ const ProductCreate: React.FC = () => {
                     </button>
                 </form>
             </div>
-            </div>
+        </div>
         
-    </>
+  
 );
 
 
