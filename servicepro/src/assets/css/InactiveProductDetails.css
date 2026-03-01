@@ -65,3 +65,133 @@
     .restore-btn:hover {
         background: black;
     }
+/* ===========================
+   TABLET (Below 992px)
+=========================== */
+@media (max-width: 992px) {
+
+    .inactive-details-container {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .inactive-left,
+    .inactive-right {
+        width: 100%;
+    }
+
+    .inactive-left {
+        margin-bottom: 30px;
+    }
+
+    .inactive-main-img img {
+        width: 100%;
+        height: auto;
+    }
+
+    .inactive-thumbs {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .inactive-thumb {
+        width: 60px;
+        height: 60px;
+    }
+
+    .inactive-table th,
+    .inactive-table td {
+        font-size: 14px;
+    }
+
+    .restore-btn {
+        width: 100%;
+        padding: 12px;
+    }
+}
+
+
+/* ===========================
+   MOBILE (Below 768px)
+=========================== */
+@media (max-width: 768px) {
+
+    .dashboard-navbar {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .menuu {
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 15px;
+    }
+
+    .notification {
+        margin-top: 10px;
+    }
+
+    .inactive-details-container {
+        padding: 15px;
+    }
+
+    .inactive-right h1 {
+        font-size: 22px;
+    }
+
+    .inactive-right h2 {
+        font-size: 18px;
+    }
+
+    .inactive-table {
+        font-size: 13px;
+    }
+
+    .inactive-thumb {
+        width: 50px;
+        height: 50px;
+    }
+
+    .restore-btn {
+        font-size: 14px;
+    }
+}
+
+
+/* ===========================
+   SMALL MOBILE (Below 480px)
+=========================== */
+@media (max-width: 480px) {
+
+    .inactive-details-container {
+        padding: 10px;
+    }
+
+    .inactive-main-img img {
+        max-height: 250px;
+        object-fit: contain;
+    }
+
+    .inactive-thumb {
+        width: 45px;
+        height: 45px;
+    }
+
+    .inactive-table th,
+    .inactive-table td {
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    .restore-btn {
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    .dashboard-navbar h1 {
+        font-size: 20px;
+    }
+}
