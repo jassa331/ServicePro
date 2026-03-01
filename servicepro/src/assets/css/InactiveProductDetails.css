@@ -195,3 +195,67 @@
         font-size: 20px;
     }
 }
+/* Hide mobile icon on desktop */
+.mobile-menu-icon {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+
+    .menuu {
+        display: none;
+    }
+
+    .mobile-menu-icon {
+        display: block;
+        color: white;
+    }
+
+    .dashboard-navbar {
+        justify-content: space-between;
+        padding: 10px 20px;
+    }
+
+    /* Sidebar */
+    .mobile-sidebar {
+        position: fixed;
+        top: 0;
+        right: -250px;
+        width: 250px;
+        height: 100%;
+        background: #132910;
+        color: white;
+        transition: 0.3s ease;
+        padding: 20px;
+        z-index: 999;
+    }
+
+        .mobile-sidebar.open {
+            right: 0;
+        }
+
+        .mobile-sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 40px;
+        }
+
+            .mobile-sidebar ul li {
+                margin: 20px 0;
+                cursor: pointer;
+            }
+
+                .mobile-sidebar ul li a {
+                    color: white;
+                    text-decoration: none;
+                }
+
+    .sidebar-close {
+        font-size: 20px;
+        text-align: right;
+        cursor: pointer;
+    }
+}
