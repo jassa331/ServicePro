@@ -5,7 +5,6 @@ import { useNavigate, useParams, Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { FaBell } from "react-icons/fa";
 import Swal from "sweetalert2";
-import { FaBars } from "react-icons/fa";
 interface ProductImage {
     id: string;
     imageUrl: string;
@@ -23,7 +22,6 @@ interface Product {
 const InactiveProductDetails: React.FC = () => {
     const { id } = useParams();
     const navigate = useNavigate();
-    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [product, setProduct] = useState<Product | null>(null);
     const [selectedImage, setSelectedImage] = useState("");
     const [loading, setLoading] = useState(true);
@@ -127,25 +125,10 @@ const InactiveProductDetails: React.FC = () => {
                 </ul>
 
                 {/* Mobile 3 Dots */}
-                <div className="mobile-menu-icon" onClick={() => setIsSidebarOpen(true)}>
-                    <FaBars />
-                </div>
+                
             </div>
             {/* Mobile Sidebar */}
-            <div className={`mobile-sidebar ${isSidebarOpen ? "open" : ""}`}>
-                <div className="sidebar-close" onClick={() => setIsSidebarOpen(false)}>
-                    ✖
-                </div>
-
-                <ul>
-                    <li><Link to="/products">User-Portal</Link></li>
-                    <li><Link to="/admin/product-create">Add-Product</Link></li>
-                    <li><Link to="/product-listing">Manage-Products</Link></li>
-                    <li><Link to="/profile">Profile</Link></li>
-                    <li onClick={handleLogout}>Logout</li>
-                    <li onClick={handleBellClick}>Notifications</li>
-                </ul>
-            </div>
+        
             <ToastContainer position="top-right" autoClose={3000} />
 
             <div className="inactive-details-container">
