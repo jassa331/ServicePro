@@ -16,6 +16,7 @@ export default function LoginPage() {
     const [rememberMe, setRememberMe] = useState<boolean>(false);
     const [error, setError] = useState<string>("");
     const [captchaValue, setCaptchaValue] = useState<string | null>(null);
+    const [loading, setLoading] = useState<boolean>(false);
 
     const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -25,7 +26,7 @@ export default function LoginPage() {
             toast.error("Please verify captcha");
             return;
         }
-
+        setLoading(true); 
         try {
             const res = await axios.post(
                 "https://systemapi.runasp.net/api/auth/login",
@@ -91,7 +92,7 @@ export default function LoginPage() {
 
                         <div style={{ marginBottom: "15px" }}>
                             <ReCAPTCHA
-                               // sitekey="6Lfi83ksAAAAADNkjVJ8JftlWyrugROii4xgvuYK"   ---local captcha
+                                //sitekey="6Lfi83ksAAAAADNkjVJ8JftlWyrugROii4xgvuYK"  // ---local captcha
                                 sitekey="6Lc_93ksAAAAAG5HrN9i8f7Ximifeyx_u5VODtwS"   //--production captcha
 
                                 onChange={(value: string | null) =>
@@ -100,8 +101,8 @@ export default function LoginPage() {
                             />
                         </div>
 
-                        <button type="submit" className="login-btn">
-                            Log In
+                        <button type="submit" className="login-btn" disabled={loading}>
+                            {loading ? <span className="spinner"></span> : "Log In"}
                         </button>
                     </form>
 
