@@ -112,6 +112,63 @@ const AdminProductDetails: React.FC = () => {
             console.error(error);
             toast.error("Update failed!");        }
     };
+    const handleImageChange = async (
+        e: React.ChangeEvent<HTMLInputElement>,
+        imageId: string
+    ) => {
+        if (!e.target.files || e.target.files.length === 0) return;
+
+        const file = e.target.files[0];
+
+        // 🔥 SWEET ALERT CONFIRMATION
+        const result = await Swal.fire({
+            title: "Are you sure?",
+            text: "Do you want to change this product image?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#0e284a",
+            cancelButtonColor: "#631a1a",
+            confirmButtonText: "Yes, change it!",
+            cancelButtonText: "Cancel"
+        });
+
+        if (!result.isConfirmed) {
+            e.target.value = ""; // reset file input
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append("ProductId", product!.id);
+        formData.append("ProductImageId", imageId);
+        formData.append("NewImage", file);
+
+        try {
+            await axios.patch(
+                "https://systemapi.runasp.net/api/Product/update-single-image",
+                formData,
+                {
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                        Authorization: `Bearer ${localStorage.getItem("token")}`
+                    }
+                }
+            );
+
+            Swal.fire({
+                icon: "success",
+                title: "Updated!",
+                text: "Product image changed successfully ",
+                timer: 1500,
+                showConfirmButton: false
+            });
+
+            fetchProduct(); // reload images
+
+        } catch (error) {
+            console.error(error);
+            toast.error("Image update failed ");
+        }
+    };
     const handleBellClick = () => {
         setHasNewNotification(false);
         navigate("/contactList");
@@ -148,12 +205,12 @@ const AdminProductDetails: React.FC = () => {
                         "Content-Type": "application/json"
                     },
                     data: {
-                        isActive: false   // 👈 THIS IS IMPORTANT
+                        isActive: false   
                     }
                 }
             );
 
-            toast.success("Product removed successfully 🎉");
+            toast.success("Product removed successfully ");
 
             setTimeout(() => {
                 navigate("/product-listing");   
@@ -204,14 +261,34 @@ const AdminProductDetails: React.FC = () => {
                 <div className="admin-left">
 
                     <div className="thumbnail-column">
-                        {product.productImages?.map((img, index) => (
-                            <img
-                                key={index}
-                                src={img.imageUrl}
-                                className={`thumb ${selectedImage === img.imageUrl ? "active" : ""}`}
-                                onClick={() => setSelectedImage(img.imageUrl)}
-                                alt="thumb"
-                            />
+                        {product.productImages?.map((img) => (
+                            <div key={img.id} className="thumb-wrapper">
+
+                                <img
+                                    src={img.imageUrl}
+                                    className={`thumb ${selectedImage === img.imageUrl ? "active" : ""}`}
+                                    onClick={() => setSelectedImage(img.imageUrl)}
+                                    alt="thumb"
+                                />
+
+                                {/* Hidden file input */}
+                                <input
+                                    type="file"
+                                    id={`file-${img.id}`}
+                                    accept="image/*"
+                                    style={{ display: "none" }}
+                                    onChange={(e) => handleImageChange(e, img.id)}
+                                />
+
+                                {/* Visible Button */}
+                                <button
+                                    className="change-btn"
+                                    onClick={() => document.getElementById(`file-${img.id}`)?.click()}
+                                >
+                                    Change Image
+                                </button>
+
+                            </div>
                         ))}
                     </div>
 
