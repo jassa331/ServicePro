@@ -7,18 +7,23 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { FaBell } from "react-icons/fa";
 import Swal from "sweetalert2";
 
+interface ProductImage {
+    id: string;
+    imageUrl: string;
+}
+
 interface Product {
     id: string;
     name: string;
     price: number;
     category: string;
     description?: string;
-    imageUrls: string[];
+    isActive: boolean;
+    productImages: ProductImage[];
 }
 const AdminProductDetails: React.FC = () => {
     const { id } = useParams();
     const navigate = useNavigate();
-
     const [product, setProduct] = useState<Product | null>(null);
     const [loading, setLoading] = useState(true);
     const [selectedImage, setSelectedImage] = useState<string>("");
@@ -36,25 +41,28 @@ const AdminProductDetails: React.FC = () => {
     // ================= GET PRODUCT =================
     const fetchProduct = async () => {
         try {
-            const res = await axios.get("https://systemapi.runasp.net/api/Product/by-category");
-            const allProducts = res.data.flatMap((cat: any) => cat.products);
-            const found = allProducts.find((p: Product) => p.id === id);
+            const res = await axios.get(
+                `https://localhost:7046/api/Product/get-active-product/${id}`
+            );
 
-            setProduct(found);
-            setSelectedImage(found?.imageUrls?.[0] || "");
+            const data = res.data;
 
-            if (found) {
-                setFormData({
-                    name: found.name,
-                    description: found.description || "",
-                    price: found.price,
-                    category: found.category,
-                    isactive: true
-                });
-            }
+            setProduct(data);
+
+            // first image select karo
+            setSelectedImage(data.productImages?.[0]?.imageUrl || "");
+
+            setFormData({
+                name: data.name,
+                description: data.description || "",
+                price: data.price,
+                category: data.category,
+                isactive: data.isActive
+            });
 
         } catch (error) {
             console.error(error);
+            toast.error("Product load failed!");
         } finally {
             setLoading(false);
         }
@@ -196,12 +204,12 @@ const AdminProductDetails: React.FC = () => {
                 <div className="admin-left">
 
                     <div className="thumbnail-column">
-                        {product.imageUrls?.map((img, index) => (
+                        {product.productImages?.map((img, index) => (
                             <img
                                 key={index}
-                                src={img}
-                                className={`thumb ${selectedImage === img ? "active" : ""}`}
-                                onClick={() => setSelectedImage(img)}
+                                src={img.imageUrl}
+                                className={`thumb ${selectedImage === img.imageUrl ? "active" : ""}`}
+                                onClick={() => setSelectedImage(img.imageUrl)}
                                 alt="thumb"
                             />
                         ))}
