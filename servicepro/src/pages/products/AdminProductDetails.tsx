@@ -42,7 +42,7 @@ const AdminProductDetails: React.FC = () => {
     const fetchProduct = async () => {
         try {
             const res = await axios.get(
-                `https://localhost:7046/api/Product/get-active-product/${id}`
+                `https://systemapi.runasp.net/api/Product/get-active-product/${id}`
             );
 
             const data = res.data;
