@@ -28,13 +28,13 @@
 }
 
 /* Navbar */
-.dashboard-navbarr {
+
+.dashboard-navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: white;
+    background: #fffefc;
     padding: 20px 30px;
-    min-height: 120px;
     border-radius: 12px;
     margin-bottom: 30px;
 }
@@ -69,21 +69,12 @@
             color: #121111;
         }
 
-        /* Animated underline */
-        .menuu li a::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: -6px;
-            width: 0%;
-            height: 2px;
-            background: black;
-            transition: width 0.3s ease;
-        }
+            /* Animated underline */
 
-        .menuu li a:hover::after {
-            width: 100%;
-        }
+
+            .menuu li a:hover::after {
+                width: 100%;
+            }
 
 /* Cards */
 .dashboard-cards {
