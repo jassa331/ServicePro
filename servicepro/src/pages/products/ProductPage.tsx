@@ -16,12 +16,21 @@ export const ProductPage: React.FC = () => {
         imageUrls: string[];
     }
     const [products, setProducts] = useState<Product[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
+
     useEffect(() => {
+        setLoading(true);
+
         axios.get<Product[]>("https://systemapi.runasp.net/api/Product")
             .then(res => {
                 setProducts(res.data);
+
+                    setLoading(false);
             })
-            .catch(err => console.error(err));
+            .catch(err => {
+                console.error(err);
+            });
+
     }, []);
     const productImages = [
         { src: "/tmt1.png", caption: "SR TMT Bars Supplier In Agra" },
@@ -52,7 +61,11 @@ export const ProductPage: React.FC = () => {
 
             <CategoryNavbar categories={categories} />
 
-           
+                {loading && (
+                    <div className="fullpage-loader">
+                        <div className="multi-loader"></div>
+                    </div>
+                )} 
 
             {/* ===== Main Content ===== */}
             <main className="container">
