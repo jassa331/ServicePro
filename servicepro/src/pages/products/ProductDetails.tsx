@@ -6,6 +6,12 @@ import { NavMenu } from '../../components/layout/NavMenu';
 import { useNavigate } from "react-router-dom";
 import { CategoryNavbar } from "../../components/layout/CategoryNavbar";
 
+interface Variant {
+    weight: string;
+    originalPrice: number;
+    sellPrice: number;
+}
+
 interface Product {
     id: string;
     name: string;
@@ -13,6 +19,7 @@ interface Product {
     category: string;
     description?: string;
     imageUrls: string[];
+    productVariants?: Variant[];
 }
 const categories = [
     "TMT Bars",
@@ -23,6 +30,7 @@ const categories = [
     "Steel Angle",
 ];
 const ProductDetails: React.FC = () => {
+    const [selectedVariant, setSelectedVariant] = useState<any>(null);
     const { id } = useParams();
     const [product, setProduct] = useState<Product | null>(null);
     const [loading, setLoading] = useState(true);
@@ -41,6 +49,7 @@ const ProductDetails: React.FC = () => {
 
                 setProduct(found);
                 setSelectedImage(found?.imageUrls?.[0] || "");
+                setSelectedVariant(found?.productVariants?.[0] || null);
             })
             .catch(err => console.error(err))
             .finally(() => setLoading(false));
@@ -102,6 +111,34 @@ const ProductDetails: React.FC = () => {
                         </tr>
                     </tbody>
                     </table>
+                    {product.productVariants && product.productVariants.length > 0 && (
+                        <div className="variants-section">
+                            <h4>Select Variant</h4>
+
+                            <div className="variant-menu">
+                                {product.productVariants.map((variant, index) => (
+                                    <div
+                                        key={index}
+                                        className={`variant-card ${selectedVariant?.weight === variant.weight ? "active-variant" : ""
+                                            }`}
+                                        onClick={() => setSelectedVariant(variant)}
+                                    >
+                                        <p className="variant-weight">{variant.weight}</p>
+
+                                        <p>
+                                            <span className="original-price">
+                                                ₹{variant.originalPrice}
+                                            </span>
+
+                                            <span className="sell-price">
+                                                ₹{variant.sellPrice}
+                                            </span>
+                                        </p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
                     <button className="contactdetals-btn" onClick={() => navigate("/contact")}>
                         Contact Us
                     </button>

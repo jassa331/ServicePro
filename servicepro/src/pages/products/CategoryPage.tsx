@@ -156,7 +156,7 @@ export const CategoryPage: React.FC = () => {
 
                                         {product.productVariants.map((variant, index) => (
                                             <div key={index} className="variant-box">
-                                                <p><strong>Weight:</strong> {variant.weight}</p>
+                                                <p><strong>Variant:</strong> {variant.weight}</p>
                                                 <p>
                                                     <strong>Price:</strong>{" "}
                                                     <span className="original-price">
