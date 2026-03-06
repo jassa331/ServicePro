@@ -92,7 +92,7 @@ export default function LoginPage() {
 
                         <div style={{ marginBottom: "15px" }}>
                             <ReCAPTCHA
-                                //sitekey="6Lfi83ksAAAAADNkjVJ8JftlWyrugROii4xgvuYK"  // ---local captcha
+                             //   sitekey="6Lfi83ksAAAAADNkjVJ8JftlWyrugROii4xgvuYK"  // ---local captcha
                                 sitekey="6Lc_93ksAAAAAG5HrN9i8f7Ximifeyx_u5VODtwS"   //--production captcha
 
                                 onChange={(value: string | null) =>

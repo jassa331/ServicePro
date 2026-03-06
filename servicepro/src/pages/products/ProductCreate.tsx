@@ -13,6 +13,9 @@ const ProductCreate: React.FC = () => {
     const [images, setImages] = useState<File[]>([]);
     const [previewUrls, setPreviewUrls] = useState<string[]>([]);
     const [loading, setLoading] = useState(false);
+    const [variants, setVariants] = useState([
+        { weight: "", originalPrice: 0, sellPrice: 0 }
+    ]);
     const navigate = useNavigate();
     useEffect(() => {
         const token = localStorage.getItem("token");
@@ -21,6 +24,24 @@ const ProductCreate: React.FC = () => {
             navigate("/login");
         }
     }, [navigate]);
+    const handleVariantChange = (
+        index: number,
+        field: string,
+        value: string | number
+    ) => {
+        const updated = [...variants];
+        updated[index] = { ...updated[index], [field]: value };
+        setVariants(updated);
+    };
+
+    const addVariant = () => {
+        setVariants([...variants, { weight: "", originalPrice: 0, sellPrice: 0 }]);
+    };
+
+    const removeVariant = (index: number) => {
+        const updated = variants.filter((_, i) => i !== index);
+        setVariants(updated);
+    };
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (!e.target.files) return;
 
@@ -65,40 +86,51 @@ const ProductCreate: React.FC = () => {
         const token = localStorage.getItem("token");
 
         const formData = new FormData();
+
         formData.append("name", name);
         formData.append("description", description);
         formData.append("price", price.toString());
         formData.append("category", category);
 
-        images.forEach(img => formData.append("images", img));
+        images.forEach((img) => formData.append("images", img));
+
+        // IMPORTANT PART
+        variants.forEach((v) => {
+            formData.append(
+                "VariantsJson",
+                JSON.stringify({
+                    weight: v.weight,
+                    originalPrice: v.originalPrice,
+                    sellPrice: v.sellPrice,
+                })
+            );
+        });
 
         try {
-            const response = await fetch("https://systemapi.runasp.net/api/Product", {
-                method: "POST",
-                headers: {
-                    Authorization: `Bearer ${token}`
-                },
-                body: formData
-            });
-            localStorage.getItem("token")
-            fetch(`${import.meta.env.VITE_API_URL}/Product`)
-
+            const response = await fetch(
+                "https://systemapi.runasp.net/api/Product",
+                {
+                    method: "POST",
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                    body: formData,
+                }
+            );
 
             if (!response.ok) {
-                const errorText = await response.text();
-                console.error("API Error:", errorText);
                 toast.error("Product creation failed!");
                 return;
             }
 
             toast.success("Product Created Successfully!");
-        } catch (error) {
-            console.error("Network Error:", error);
+        } catch {
             toast.error("Something went wrong!");
         }
 
-        setLoading(false);
-    };
+        setTimeout(() => {
+            setLoading(false);
+        }, 1000);    };
 
 
     return (
@@ -109,6 +141,11 @@ const ProductCreate: React.FC = () => {
             {/* ===== NAVBAR ===== */}
             <div className="dashboard-navbar">
                 <h1>Create Product</h1>
+                {loading && (
+                    <div className="fullpage-loader">
+                        <div className="multi-loader"></div>
+                    </div>
+                )}   
 
                 <ul className="menu">
                     <li><Link to="/dashboard">Dashboard</Link></li>
@@ -184,7 +221,53 @@ const ProductCreate: React.FC = () => {
                             </select>
                         </div>
                     </div>
+                    <div className="form-group">
+                        <label>Product Variants</label>
 
+                        {variants.map((variant, index) => (
+                            <div className="variant-row" key={index}>
+
+                                <input
+                                    type="text"
+                                    placeholder="Weight (500g / 1kg)"
+                                    value={variant.weight}
+                                    onChange={(e) =>
+                                        handleVariantChange(index, "weight", e.target.value)
+                                    }
+                                />
+
+                                <input
+                                    type="number"
+                                    placeholder="Original Price"
+                                    value={variant.originalPrice}
+                                    onChange={(e) =>
+                                        handleVariantChange(index, "originalPrice", Number(e.target.value))
+                                    }
+                                />
+
+                                <input
+                                    type="number"
+                                    placeholder="Sell Price"
+                                    value={variant.sellPrice}
+                                    onChange={(e) =>
+                                        handleVariantChange(index, "sellPrice", Number(e.target.value))
+                                    }
+                                />
+
+                                <button
+                                    type="button"
+                                    onClick={() => removeVariant(index)}
+                                >
+                                    Remove
+                                </button>
+
+                            </div>
+                        ))}
+
+                        <button type="button" onClick={addVariant}>
+                            + Add Variant
+                        </button>
+                    </div>
                     <div className="form-group">
                         <label>Upload Images (Max 4)</label>
                         <input
