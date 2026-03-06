@@ -5,6 +5,12 @@ import "../../assets/css/CategoryPage.css";
 import { NavMenu } from '../../components/layout/NavMenu';
 import { CategoryNavbar } from "../../components/layout/CategoryNavbar";
 
+interface ProductVariant {
+    weight: string;
+    originalPrice: number;
+    sellPrice: number;
+}
+
 interface Product {
     id: string;
     name: string;
@@ -12,6 +18,7 @@ interface Product {
     category: string;
     description?: string;
     imageUrls: string[];
+    productVariants?: ProductVariant[];
 }
 
 export const CategoryPage: React.FC = () => {
@@ -44,21 +51,35 @@ export const CategoryPage: React.FC = () => {
 
         const backendCategory = categoryMap[categoryName] || "";
 
-        axios.get<Product[]>("https://systemapi.runasp.net/api/Product")
-            .then(res => {
-                const filtered = res.data.filter(
-                    p => p.category.toLowerCase() === backendCategory.toLowerCase()
+        axios
+            .get<any[]>("https://systemapi.runasp.net/api/Product/get-all-Product-globale-Response")            .then(res => {
+
+                const apiData = res.data;
+
+                const formattedProducts = apiData.map((p: any) => ({
+                    id: p.id,
+                    name: p.name,
+                    price: p.price,
+                    category: p.category,
+                    description: p.description,
+                    imageUrls: p.productImages?.map((img: any) => img.imageUrl) || [],
+                    productVariants: p.productVariants || []
+                }));
+
+                const filtered = formattedProducts.filter(
+                    (p: any) =>
+                        p.category?.toLowerCase() === backendCategory.toLowerCase()
                 );
 
-                // Remove duplicate IDs (safety)
                 const uniqueProducts = Array.from(
-                    new Map(filtered.map(p => [p.id, p])).values()
+                    new Map(filtered.map((p: any) => [p.id, p])).values()
                 );
 
                 setProducts(uniqueProducts);
             })
             .catch(err => console.error(err))
             .finally(() => setLoading(false));
+
     }, [categoryName]);
 
     if (loading) return <div className="loader">Loading Products...</div>;
@@ -129,6 +150,27 @@ export const CategoryPage: React.FC = () => {
                                     </button>
 
                                 </div>
+                                {product.productVariants && product.productVariants.length > 0 && (
+                                    <div className="variants-section">
+                                        <h4>Available Variants:</h4>
+
+                                        {product.productVariants.map((variant, index) => (
+                                            <div key={index} className="variant-box">
+                                                <p><strong>Weight:</strong> {variant.weight}</p>
+                                                <p>
+                                                    <strong>Price:</strong>{" "}
+                                                    <span className="original-price">
+                                                        ₹{variant.originalPrice}
+                                                    </span>{" "}
+                                                    ➝
+                                                    <span className="sell-price">
+                                                        ₹{variant.sellPrice}
+                                                    </span>
+                                                </p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
 
                             </div>
                         );
