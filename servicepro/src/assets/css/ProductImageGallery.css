@@ -1,0 +1,41 @@
+.gallery-container {
+    overflow-x: auto;
+    padding: 10px 0;
+    scroll-behavior: smooth;
+}
+
+.gallery-track {
+    display: flex;
+    gap: 20px;
+}
+
+.gallery-item {
+    min-width: 100%;
+    flex: 0 0 100%;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+    .gallery-item img {
+        width: 100%;
+        display: block;
+    }
+
+.caption {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 14px;
+    text-align: center;
+}
+@media (min-width: 768px) {
+    .gallery-item {
+        min-width: 250px;
+        flex: 0 0 auto;
+    }
+}
