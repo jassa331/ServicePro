@@ -367,7 +367,6 @@ const AdminProductDetails: React.FC = () => {
                             <table className="admin-table">
                                 <thead>
                                     <tr>
-                                        <th>Variant ID</th>
                                         <th>Variants</th>
                                         <th>Original Price</th>
                                         <th>Sell Price</th>
@@ -376,7 +375,6 @@ const AdminProductDetails: React.FC = () => {
                                 <tbody>
                                     {product.productVariant?.map((variant) => (
                                         <tr key={variant.id}>
-                                            <td>{variant.id}</td>
                                             <td>{variant.weight}</td>
                                             <td>₹ {variant.originalPrice}</td>
                                             <td>₹ {variant.sellPrice}</td>
