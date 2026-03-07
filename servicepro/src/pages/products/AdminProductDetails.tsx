@@ -11,7 +11,14 @@ interface ProductImage {
     id: string;
     imageUrl: string;
 }
-
+interface ProductVariant {
+    id: string;
+    productId: string;
+    weight: string;
+    originalPrice: number;
+    sellPrice: number;
+    isActive: boolean;
+}
 interface Product {
     id: string;
     name: string;
@@ -20,11 +27,13 @@ interface Product {
     description?: string;
     isActive: boolean;
     productImages: ProductImage[];
+    productVariant: ProductVariant[];
 }
 const AdminProductDetails: React.FC = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [product, setProduct] = useState<Product | null>(null);
+    const [variants, setVariants] = useState<ProductVariant[]>([]);
     const [loading, setLoading] = useState(true);
     const [selectedImage, setSelectedImage] = useState<string>("");
 
@@ -48,8 +57,8 @@ const AdminProductDetails: React.FC = () => {
             const data = res.data;
 
             setProduct(data);
+            setVariants(data.productVariant || []);
 
-            // first image select karo
             setSelectedImage(data.productImages?.[0]?.imageUrl || "");
 
             setFormData({
@@ -67,7 +76,6 @@ const AdminProductDetails: React.FC = () => {
             setLoading(false);
         }
     };
-
     useEffect(() => {
         if (!id) return;
         fetchProduct();
@@ -83,16 +91,41 @@ const AdminProductDetails: React.FC = () => {
         }));
     };
     const [hasNewNotification, setHasNewNotification] = useState(false);
+    const handleVariantChange = (
+        index: number,
+        field: string,
+        value: string | number
+    ) => {
 
+        const updated = [...variants];
+
+        (updated[index] as any)[field] = value;
+
+        setVariants(updated);
+    };
     // ================= UPDATE PRODUCT =================
     const handleUpdate = async () => {
         try {
+
             const data = new FormData();
+
             data.append("Name", formData.name);
             data.append("Description", formData.description);
             data.append("Price", formData.price.toString());
             data.append("Category", formData.category);
             data.append("isactive", formData.isactive.toString());
+
+            variants.forEach((v) => {
+                data.append(
+                    "Variants",
+                    JSON.stringify({
+                        id: v.id,
+                        weight: v.weight,
+                        originalPrice: v.originalPrice,
+                        sellPrice: v.sellPrice
+                    })
+                );
+            });
 
             await axios.put(
                 `https://systemapi.runasp.net/api/Product/${id}`,
@@ -106,11 +139,12 @@ const AdminProductDetails: React.FC = () => {
 
             toast.success("Product updated successfully!");
             setIsEdit(false);
-            fetchProduct(); // refresh data
+            fetchProduct();
 
         } catch (error) {
             console.error(error);
-            toast.error("Update failed!");        }
+            toast.error("Update failed!");
+        }
     };
     const handleImageChange = async (
         e: React.ChangeEvent<HTMLInputElement>,
@@ -289,6 +323,7 @@ const AdminProductDetails: React.FC = () => {
                                 </button>
 
                             </div>
+
                         ))}
                     </div>
 
@@ -327,6 +362,29 @@ const AdminProductDetails: React.FC = () => {
                                     </tr>
                                 </tbody>
                             </table>
+                            <h3 style={{ marginTop: "30px" }}>Product Variants</h3>
+
+                            <table className="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>Variant ID</th>
+                                        <th>Variants</th>
+                                        <th>Original Price</th>
+                                        <th>Sell Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {product.productVariant?.map((variant) => (
+                                        <tr key={variant.id}>
+                                            <td>{variant.id}</td>
+                                            <td>{variant.weight}</td>
+                                            <td>₹ {variant.originalPrice}</td>
+                                            <td>₹ {variant.sellPrice}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+
                         </>
                     ) : (
                         <div className="edit-form">
@@ -369,7 +427,44 @@ const AdminProductDetails: React.FC = () => {
                                     onChange={handleChange}
                                 />
                             </div>
+                                <h3 style={{ marginTop: "20px" }}>Edit Variants</h3>
 
+                                {variants.map((variant, index) => (
+                                    <div key={variant.id} className="variant-row">
+
+                                        <label>Variant</label>
+                                        <input
+                                            type="text"
+                                            value={variant.weight}
+                                            onChange={(e) =>
+                                                handleVariantChange(index, "weight", e.target.value)
+                                            }
+                                            placeholder="Weight"
+                                        />
+                                        <label>Original Price</label>
+
+                                        <input
+
+                                            type="number"
+                                            value={variant.originalPrice}
+                                            onChange={(e) =>
+                                                handleVariantChange(index, "originalPrice", Number(e.target.value))
+                                            }
+                                            placeholder="Original Price"
+                                        />
+                                        <label>Sell Price</label>
+
+                                        <input
+                                            type="number"
+                                            value={variant.sellPrice}
+                                            onChange={(e) =>
+                                                handleVariantChange(index, "sellPrice", Number(e.target.value))
+                                            }
+                                            placeholder="Sell Price"
+                                        />
+
+                                    </div>
+                                ))}
                         </div>
                     )}
 
