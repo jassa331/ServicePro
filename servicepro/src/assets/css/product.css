@@ -1,0 +1,329 @@
+/* ============================= */
+/* GLOBAL STYLING */
+/* ============================= */
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #f4f6fb;
+    margin: 0;
+    padding: 0;
+    color: #1e293b;
+}
+
+/* ============================= */
+/* MAIN CONTAINER */
+/* ============================= */
+
+.product-container {
+    max-width: 1300px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+/* ============================= */
+/* NAVBAR */
+/* ============================= */
+
+.dashboard-navbarrr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 20px 35px;
+    border-radius: 16px;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+    .dashboard-navbarrr h1 {
+        margin: 0;
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+/* MENU */
+
+.menuu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 35px;
+    margin: 0;
+    padding: 0;
+}
+
+    .menuu li {
+        position: relative;
+    }
+
+        .menuu li a {
+            text-decoration: none;
+            color: #334155;
+            font-size: 15px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+            .menuu li a:hover {
+                color: #2563eb;
+            }
+
+            /* Underline animation */
+            .menuu li a::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: -6px;
+                width: 0%;
+                height: 2px;
+                background: #2563eb;
+                transition: 0.3s;
+            }
+
+            .menuu li a:hover::after {
+                width: 100%;
+            }
+
+/* ============================= */
+/* NOTIFICATION */
+/* ============================= */
+
+.notification-item {
+    position: relative;
+    cursor: pointer;
+}
+
+.bell-icon {
+    font-size: 20px;
+    color: #334155;
+}
+
+.notification-dot {
+    position: absolute;
+    top: -4px;
+    right: -6px;
+    width: 8px;
+    height: 8px;
+    background: red;
+    border-radius: 50%;
+}
+
+/* ============================= */
+/* PRODUCT CARD */
+/* ============================= */
+
+.product-card {
+    background: white;
+    width: 100%;
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 45px 50px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+    .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+    }
+
+    .product-card h2 {
+        text-align: center;
+        margin-bottom: 35px;
+        font-size: 22px;
+        font-weight: 700;
+    }
+
+/* ============================= */
+/* FORM STYLING */
+/* ============================= */
+
+.form-group {
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+    .form-group label {
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #475569;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 12px 15px;
+        border-radius: 10px;
+        border: 1px solid #d1d5db;
+        font-size: 14px;
+        transition: 0.3s;
+    }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+        }
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* ROW */
+
+.row {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+    .row .form-group {
+        flex: 1;
+    }
+
+/* ============================= */
+/* IMAGE PREVIEW */
+/* ============================= */
+
+.preview-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.preview-item {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+    transition: 0.3s;
+}
+
+    .preview-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .preview-item:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .preview-item button {
+        position: absolute;
+        top: 6px;
+        right: 6px;
+        background: rgba(239,68,68,0.9);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 22px;
+        height: 22px;
+        font-size: 12px;
+        cursor: pointer;
+    }
+
+/* ============================= */
+/* BUTTON */
+/* ============================= */
+
+.submit-btn {
+    background: black;
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    padding: 14px;
+    cursor: pointer;
+    font-size: 15px;
+    width: 100%;
+    transition: 0.3s;
+}
+
+    .submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(37,99,235,0.3);
+    }
+
+/* ============================= */
+/* DASHBOARD CARDS */
+/* ============================= */
+
+.dashboard-cards {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.card {
+    flex: 1;
+    background: white;
+    padding: 35px;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+    text-align: center;
+    transition: 0.3s;
+}
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    .card h2 {
+        font-size: 16px;
+        color: #64748b;
+    }
+
+    .card p {
+        font-size: 30px;
+        font-weight: bold;
+        margin-top: 10px;
+        color: #2563eb;
+    }
+
+/* ============================= */
+/* RESPONSIVE */
+/* ============================= */
+
+@media (max-width: 992px) {
+    .dashboard-navbarrr {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .menuu {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+    }
+
+    .preview-item {
+        width: 85px;
+        height: 85px;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-card {
+        padding: 25px;
+    }
+
+    .submit-btn {
+        font-size: 14px;
+    }
+}
