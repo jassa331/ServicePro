@@ -1,10 +1,37 @@
-import React from 'react';
+﻿import React from 'react';
 import { NavMenu } from '../../components/layout/NavMenu';
 import { ProductImageGallery } from '../../components/common/ProductImageGallery';
 import "../../assets/css/ProductPage.css";
 import { CategoryNavbar } from "../../components/layout/CategoryNavbar";
-
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 export const ProductPage: React.FC = () => {
+    interface Product {
+        id: string;
+        name: string;
+        price: number;
+        category: string;
+        description?: string;
+        imageUrls: string[];
+    }
+    const [products, setProducts] = useState<Product[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
+
+    useEffect(() => {
+        setLoading(true);
+
+        axios.get<Product[]>("https://systemapi.runasp.net/api/Product")
+            .then(res => {
+                setProducts(res.data);
+
+                    setLoading(false);
+            })
+            .catch(err => {
+                console.error(err);
+            });
+
+    }, []);
     const productImages = [
         { src: "/tmt1.png", caption: "SR TMT Bars Supplier In Agra" },
         { src: "/myimage.png", caption: "TMT Steel Bars" },
@@ -18,30 +45,27 @@ export const ProductPage: React.FC = () => {
         "MS Pipe",
         "Steel Angle",
     ];
+    const navigate = useNavigate();
 
-    const relatedPosts = [
-        "Specification of Tata TMT Bars",
-        "Advantages of Tata TMT Bars",
-        "How to Store TMT Bars Properly",
-        "Tempcore vs Micro-Alloying Technology",
-    ];
+    //const relatedPosts = [
+    //    "Specification of Tata TMT Bars",
+    //    "Advantages of Tata TMT Bars",
+    //    "How to Store TMT Bars Properly",
+    //    "Tempcore vs Micro-Alloying Technology",
+    //];
 
     return (
         <>
             <NavMenu />
+            <main className="main-content">
+
             <CategoryNavbar categories={categories} />
 
-            {/* ===== Hero Banner ===== */}
-            <section className="product-hero">
-                <div className="hero-content">
-                    <h1>Tata Tiscon TMT Bars</h1>
-                    <p>Premium quality steel for durable construction and infrastructure.</p>
-                    <button className="btn btn-primary">Request a Quote</button>
-                </div>
-                <div className="hero-image">
-                    <img src="/ij.jpg" alt="Tata Tiscon TMT Bars" />
-                </div>
-            </section>
+                {loading && (
+                    <div className="fullpage-loader">
+                        <div className="multi-loader"></div>
+                    </div>
+                )} 
 
             {/* ===== Main Content ===== */}
             <main className="container">
@@ -52,48 +76,79 @@ export const ProductPage: React.FC = () => {
 
                 <div className="product-page">
                     {/* Product Gallery */}
-                    <ProductImageGallery images={productImages} />
 
                     {/* Product Details */}
                     <div className="product-details">
-                        <h2>Tata Tiscon TMT Bar</h2>
-                        <p className="price">Rs 813 / Piece <span className="price-request">Price on Request</span></p>
+                       {/* <h2>Tata Tiscon TMT Bar</h2>*/}
+                        {/*<p className="price">Rs 813 / Piece <span className="price-request">Price on Request</span></p>*/}
 
-                        <table className="product-specs">
-                            <tbody>
-                                <tr><td>Material</td><td>Mild Steel</td></tr>
-                                <tr><td>Thickness/Diameter</td><td>1-2 inch, 2-3 inch</td></tr>
-                                <tr><td>Application</td><td>Construction</td></tr>
-                                <tr><td>Single Piece Length</td><td>12 Meter</td></tr>
-                                <tr><td>Country of Origin</td><td>Made in India</td></tr>
-                                <tr><td>Brand</td><td>TATA</td></tr>
-                            </tbody>
-                        </table>
+                        {/*<table className="product-specs">*/}
+                        {/*    <tbody>*/}
+                        {/*        <tr><td>Material</td><td>Mild Steel</td></tr>*/}
+                        {/*        <tr><td>Thickness/Diameter</td><td>1-2 inch, 2-3 inch</td></tr>*/}
+                        {/*        <tr><td>Application</td><td>Construction</td></tr>*/}
+                        {/*        <tr><td>Single Piece Length</td><td>12 Meter</td></tr>*/}
+                        {/*        <tr><td>Country of Origin</td><td>Made in India</td></tr>*/}
+                        {/*        <tr><td>Brand</td><td>TATA</td></tr>*/}
+                        {/*    </tbody>*/}
+                        {/*</table>*/}
 
-                        <div className="product-actions">
-                            <button className="btn btn-primary">Request a Call Back</button>
-                            <button className="btn btn-secondary">Yes! I am Interested</button>
-                        </div>
+                        {/*<div className="product-actions">*/}
+                        {/*    <button className="btn btn-primary">Request a Call Back</button>*/}
+                        {/*    <button className="btn btn-secondary">Yes! I am Interested</button>*/}
+                        {/*</div>*/}
                     </div>
                 </div>
 
                 {/* Related / Info Section */}
-                <aside className="related-posts">
-                    <h3>Recent Posts & Info</h3>
-                    <ul>
-                        {relatedPosts.map((post, index) => (
-                            <li key={index}>{post}</li>
+                {/*<aside className="related-posts">*/}
+                {/*    <h3>Recent Posts & Info</h3>*/}
+                {/*    <ul>*/}
+                {/*        {relatedPosts.map((post, index) => (*/}
+                {/*            <li key={index}>{post}</li>*/}
+                {/*        ))}*/}
+                {/*    </ul>*/}
+                {/*</aside>*/}
+                </main>
+                {/* ===== All Products Section ===== */}
+                <section className="all-products-section container">
+                    <h2 style={{ marginBottom: "20px" }}>Our Products</h2>
+
+                    <div className="products-gridd">
+                        {products.map(product => (
+                            <div
+                                key={product.id}
+                                className="amazon-cardd"
+                                onClick={() => navigate(`/category/${product.category.toLowerCase().replace(/\s+/g, "-")}`)}
+                                style={{ cursor: "pointer" }}
+                            >
+                                <img
+                                    src={product.imageUrls?.[0]}
+                                    alt={product.name}
+                                    className="main-image"
+                                />
+
+                                <div className="product-info">
+                                    <h3>{product.name}</h3>
+                                    <p className="category">{product.category}</p>
+                                    <p className="price">₹ {product.price}</p>
+                                </div>
+                            </div>
                         ))}
-                    </ul>
-                </aside>
-            </main>
+                    </div>
+                </section>
             <section className="company-info">
                 <div className="company-info-text">
                     <p>
                         We are the leading Authorized Wholesale Dealer of Binding Wire, Roofing Sheet, MS Square Pipe, Mild Steel Angle etc.
                         We are always focused towards presenting a supreme range of products for our customers.
                     </p>
-                    <button className="btn btn-primary">+ Read More</button>
+                    <button
+                        className="btn btn-primary"
+                        onClick={() => navigate("/profile")}
+                    >
+                        + Read More
+                    </button>
                 </div>
 
                 <div className="company-info-cards">
@@ -119,15 +174,21 @@ export const ProductPage: React.FC = () => {
                     </div>
                     <div className="info-card">
                         <h4>GST No</h4>
-                        <p>09AARFB6974F1ZV</p>
+                        <p>09JFUPS2230L1ZL</p>
                     </div>
                 </div>
 
                 <div className="contact-us">
                     <p>Get in touch with us for best deals</p>
-                    <button className="btn btn-primary">Contact Us</button>
-                </div>
-            </section>
+                        <button
+                            className="btn btn-primary"
+                            onClick={() => navigate("/contact")}
+                        >
+                            Contact Us
+                        </button>                    </div>
+                  
+                </section>
+            </main>
         </>
     );
 };

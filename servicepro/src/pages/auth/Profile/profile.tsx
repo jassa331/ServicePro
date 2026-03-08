@@ -1,65 +1,108 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../../../assets/css/Profile.css";
+import { NavMenu } from '../../../components/layout/NavMenu';
+import { CategoryNavbar } from "../../../components/layout/CategoryNavbar";
 
-interface ProfileData {
-    id: string;
-    name: string;
-    email: string;
-    phoneNumber: string;
-    role: string;
-    createdAt: string;
-}
+
 
 const Profile: React.FC = () => {
-    const [profile, setProfile] = useState<ProfileData | null>(null);
-
+    const categories = [
+        "TMT Bars",
+        "cemment",
+        "Binding Wire",
+        "Roofing Sheet",
+        "MS Pipe",
+        "Steel Angle",
+    ];
     useEffect(() => {
-        const token = localStorage.getItem("token");
-
-        axios.get("https://systemapi.runasp.net/api/auth/profile", {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        })
-            .then(res => setProfile(res.data))
+        axios.get("https://systemapi.runasp.net/api/auth/profile")
             .catch(() => {
-                localStorage.removeItem("token");
-                window.location.href = "/login";
+                console.log("Profile fetch failed");
             });
     }, []);
-
-    if (!profile) return <div className="loader">Loading Profile...</div>;
-
     return (
-        <div className="profile-wrapper">
-            <div className="profile-card">
-                <div className="profile-avatar">
-                    {profile.name.charAt(0).toUpperCase()}
-                </div>
+        <>
+            <NavMenu />
+            <CategoryNavbar categories={categories} />
 
-                <h2 className="profile-name">{profile.name}</h2>
-                <span className="profile-role">{profile.role}</span>
+        <div className="profile-wrapper">
+            <div className="profile-card company-card">
+
+                <h2 className="profile-name">
+                    S.R Enterprise Cement, Iron & Steel Trader
+                </h2>
+
+                <span className="profile-role">
+                    Authorized Wholesale Dealer | Since 1993
+                </span>
 
                 <div className="profile-info">
+
                     <div className="info-row">
-                        <span>Email</span>
-                        <p>{profile.email}</p>
+                        <span>About Company</span>
+                        <p>
+                            Founded in 1993, we are an authorized wholesale dealer of
+                            Binding Wire, Roofing Sheet, MS Square Pipe, Mild Steel Angle etc.
+                            Our products are known for sturdy design, pressure bearing capacity
+                            and dimensional accuracy.
+                        </p>
                     </div>
 
                     <div className="info-row">
-                        <span>Phone</span>
-                        <p>{profile.phoneNumber}</p>
+                        <span>CEO</span>
+                        <p>Pawan Agarwal</p>
                     </div>
 
                     <div className="info-row">
-                        <span>Joined</span>
-                        <p>{new Date(profile.createdAt).toDateString()}</p>
+                        <span>Nature of Business</span>
+                        <p>Trader - Wholesaler / Distributor</p>
                     </div>
+
+                    <div className="info-row">
+                        <span>Employees</span>
+                        <p>11 to 25 People</p>
+                    </div>
+
+                    <div className="info-row">
+                        <span>Registered Address</span>
+                        <p>
+                            44/322/16E/4, Shahganj Bodla Road,
+                            Bodla, Agra - 282007, Uttar Pradesh, India
+                        </p>
+                    </div>
+
+                    <div className="info-row">
+                        <span>GST Number</span>
+                            <p>09JFUPS2230L1ZL</p>
+                    </div>
+
+                    <div className="info-row">
+                        <span>Annual Turnover</span>
+                        <p>5 - 25 Crore</p>
+                    </div>
+
+                    <div className="info-row">
+                        <span>Banker</span>
+                        <p>HDFC Bank</p>
+                    </div>
+
+                    <div className="info-row">
+                        <span>Payment Mode</span>
+                        <p>Cash, Credit Card, Cheque, DD</p>
+                    </div>
+
+                    <div className="info-row">
+                        <span>Shipment Mode</span>
+                        <p>By Road</p>
+                    </div>
+
                 </div>
             </div>
-        </div>
+            </div>
+        </>
     );
+
 };
 
 export default Profile;
