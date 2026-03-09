@@ -131,7 +131,117 @@
     align-items: center;
     margin-bottom: 20px;
 }
+.variant-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 15px;
+}
 
+    .variant-row label {
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .variant-row input {
+        padding: 8px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+        min-width: 120px;
+    }
+@media (max-width: 768px) {
+
+    .variant-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+        .variant-row input {
+            width: 100%;
+        }
+
+        .variant-row label {
+            margin-top: 5px;
+        }
+}
+@media (max-width: 480px) {
+
+    .variant-row {
+        padding: 10px;
+        background: #f9f9f9;
+        border-radius: 8px;
+    }
+
+        .variant-row input {
+            width: 100%;
+            font-size: 13px;
+        }
+
+        .variant-row label {
+            font-size: 13px;
+        }
+}
+@media (max-width: 350px) {
+
+    .variant-row input {
+        font-size: 12px;
+        padding: 6px;
+    }
+}
+/* VARIANT CARD */
+.variant-card {
+    background: #ffffff;
+    border: 1px solid #e2e2e2;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+}
+
+/* TITLE */
+.variant-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #0e284a;
+}
+
+/* ROW */
+.variant-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+}
+
+/* FIELD */
+.variant-field {
+    display: flex;
+    flex-direction: column;
+}
+
+    .variant-field label {
+        font-size: 13px;
+        margin-bottom: 5px;
+        font-weight: 500;
+    }
+
+    .variant-field input {
+        padding: 8px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+    }
+@media (max-width:768px) {
+
+    .variant-row {
+        grid-template-columns: 1fr;
+    }
+
+    .variant-card {
+        padding: 15px;
+    }
+}
 /* Thumbnail image */
 .thumb {
     width: 100px;
