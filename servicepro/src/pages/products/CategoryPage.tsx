@@ -4,6 +4,7 @@ import axios from "axios";
 import "../../assets/css/CategoryPage.css";
 import { NavMenu } from '../../components/layout/NavMenu';
 import { CategoryNavbar } from "../../components/layout/CategoryNavbar";
+import { FaArrowRight } from "react-icons/fa";
 
 interface ProductVariant {
     weight: string;
@@ -227,7 +228,35 @@ export const CategoryPage: React.FC = () => {
                             Contact Us
                         </button>                    </div>
 
+                   
                 </section>
+                <div
+                    className="info-card"
+                    style={{
+                        padding: "20px",
+                        background: "linear-gradient(#cf9b9b, black, black)",
+                        borderRadius: "12px",
+                        textAlign: "center",
+                        boxShadow: "0 8px 20px rgba(0,0,0,0.15)"
+                    }}
+                >
+                    <a
+                        href="/company"
+                        style={{
+                            color: "#fff",
+                            textDecoration: "none",
+                            fontSize: "20px",
+                            fontWeight: "600",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            gap: "8px"
+                        }}
+                    >
+                        @website support click here <FaArrowRight />
+                    </a>
+                </div>
+               
             </div>
         </>
     );
