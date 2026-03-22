@@ -13,10 +13,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: frontend   # 👈 react project folder
-
     steps:
 
     - name: Checkout code
@@ -29,14 +25,18 @@ jobs:
 
     - name: Install Dependencies
       run: npm install
+      working-directory: servicepro
 
-    - name: Check code lint
+    - name: Lint Check
       run: npm run lint
+      working-directory: servicepro
       continue-on-error: true
 
-    - name: Run tests
+    - name: Run Tests
       run: npm test -- --watchAll=false
+      working-directory: servicepro
       continue-on-error: true
 
-    - name: Build project
+    - name: Build Project
       run: npm run build
+      working-directory: servicepro
