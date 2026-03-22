@@ -1,0 +1,38 @@
+name: React CI Pipeline
+
+on:
+  push:
+    branches:
+      - production
+      - staging
+      - main
+
+  workflow_dispatch:   # Manual run button
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+
+    - name: Install Dependencies
+      run: npm install
+
+    - name: Check code lint
+      run: npm run lint
+      continue-on-error: true
+
+    - name: Run tests
+      run: npm test -- --watchAll=false
+      continue-on-error: true
+
+    - name: Build project
+      run: npm run build
