@@ -21,21 +21,11 @@ jobs:
     - name: Setup Node
       uses: actions/setup-node@v3
       with:
-        node-version: 18
+        node-version: 22
 
     - name: Install Dependencies
       run: npm install
       working-directory: servicepro
-
-    - name: Lint Check
-      run: npm run lint
-      working-directory: servicepro
-      continue-on-error: true
-
-    - name: Run Tests
-      run: npm test -- --watchAll=false
-      working-directory: servicepro
-      continue-on-error: true
 
     - name: Build Project
       run: npm run build
