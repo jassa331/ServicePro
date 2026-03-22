@@ -428,39 +428,49 @@ const AdminProductDetails: React.FC = () => {
                                 <h3 style={{ marginTop: "20px" }}>Edit Variants</h3>
 
                                 {variants.map((variant, index) => (
-                                    <div key={variant.id} className="variant-row">
+                                    <div key={variant.id} className="variant-card">
 
-                                        <label>Variant</label>
-                                        <input
-                                            type="text"
-                                            value={variant.weight}
-                                            onChange={(e) =>
-                                                handleVariantChange(index, "weight", e.target.value)
-                                            }
-                                            placeholder="Weight"
-                                        />
-                                        <label>Original Price</label>
+                                        <h4 className="variant-title">Variant {index + 1}</h4>
 
-                                        <input
+                                        <div className="variant-row">
 
-                                            type="number"
-                                            value={variant.originalPrice}
-                                            onChange={(e) =>
-                                                handleVariantChange(index, "originalPrice", Number(e.target.value))
-                                            }
-                                            placeholder="Original Price"
-                                        />
-                                        <label>Sell Price</label>
+                                            <div className="variant-field">
+                                                <label>Variant</label>
+                                                <input
+                                                    type="text"
+                                                    value={variant.weight}
+                                                    onChange={(e) =>
+                                                        handleVariantChange(index, "weight", e.target.value)
+                                                    }
+                                                    placeholder="Weight"
+                                                />
+                                            </div>
 
-                                        <input
-                                            type="number"
-                                            value={variant.sellPrice}
-                                            onChange={(e) =>
-                                                handleVariantChange(index, "sellPrice", Number(e.target.value))
-                                            }
-                                            placeholder="Sell Price"
-                                        />
+                                            <div className="variant-field">
+                                                <label>Original Price</label>
+                                                <input
+                                                    type="number"
+                                                    value={variant.originalPrice}
+                                                    onChange={(e) =>
+                                                        handleVariantChange(index, "originalPrice", Number(e.target.value))
+                                                    }
+                                                    placeholder="Original Price"
+                                                />
+                                            </div>
 
+                                            <div className="variant-field">
+                                                <label>Sell Price</label>
+                                                <input
+                                                    type="number"
+                                                    value={variant.sellPrice}
+                                                    onChange={(e) =>
+                                                        handleVariantChange(index, "sellPrice", Number(e.target.value))
+                                                    }
+                                                    placeholder="Sell Price"
+                                                />
+                                            </div>
+
+                                        </div>
                                     </div>
                                 ))}
                         </div>

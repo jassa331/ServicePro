@@ -16,6 +16,8 @@ import ProductListing from "../pages/products/ListingProduct";
 import DeletedListingProduct from "../pages/products/DeletedListingProduct";
 import InactiveProductDetails from "../pages/products/InactiveProductDetails";
 
+import CompanyPage from "../pages/Campany/CompanyPage";
+
 import AdminProductDetails from "../pages/products/AdminProductDetails";
 
 
@@ -39,6 +41,8 @@ export default function AppRoutes() {
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/contactList" element={<ContactList />} />
                     <Route path="/product/:id" element={<ProductDetails />} />
+                    <Route path="/company" element={<CompanyPage />} />
+
 
                     <Route
                         path="/admin/product-create"
