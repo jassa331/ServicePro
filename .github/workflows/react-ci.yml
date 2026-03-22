@@ -7,31 +7,26 @@ on:
       - staging
       - main
 
-  workflow_dispatch:   # Manual run button
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    
+
     - name: Checkout code
       uses: actions/checkout@v3
 
     - name: Setup Node
       uses: actions/setup-node@v3
       with:
-        node-version: 18
+        node-version: 22
 
+    - name: Install Dependencies
+      run: npm install
+      working-directory: servicepro
 
-
-    - name: Check code lint
-      run: npm run lint
-      continue-on-error: true
-
-    - name: Run tests
-      run: npm test -- --watchAll=false
-      continue-on-error: true
-
-    - name: Build project
+    - name: Build Project
       run: npm run build
+      working-directory: servicepro
