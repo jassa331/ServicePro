@@ -7,14 +7,18 @@ on:
       - staging
       - main
 
-  workflow_dispatch:   # Manual run button
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: frontend   # 👈 react project folder
+
     steps:
-    
+
     - name: Checkout code
       uses: actions/checkout@v3
 
